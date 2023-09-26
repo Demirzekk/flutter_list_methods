@@ -46,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+         
           Center(child: Text(list.toString())),
           const SizedBox(
             height: 8,
