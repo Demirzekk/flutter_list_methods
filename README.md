@@ -24,7 +24,6 @@
 23. lastIndexWher
 24. last Where
 25. map
-26. noSuchMethoc
 27. reduce
 28. remove
 29. removeAt
