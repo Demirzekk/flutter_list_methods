@@ -1,32 +1,42 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_list_methods/sublist_example.dart/sublist_item.dart';
 
-class Learning extends StatefulWidget {
-  const Learning({super.key});
+class LazyPaging extends StatefulWidget {
+  const LazyPaging({super.key});
 
   @override
-  State<Learning> createState() => _LearningState();
+  State<LazyPaging> createState() => _LazyPagingState();
 }
 
-int? count;
-
-class _LearningState extends State<Learning> {
+class _LazyPagingState extends State<LazyPaging> {
   GetNameList namelist = GetNameList();
+  List<String> nameSublist = [];
+  int selectedIndex = 0;
+  int sublistButtonsLength = 0;
 
-  List<String> newListMethod() {
-    List<String> firstlist = [];
+  @override
+  void initState() {
+    super.initState();
+    init();
+    calculateListLength(list: namelist.toNames);
+  }
 
-    if (count == 1) {
-      setState(() {});
-      firstlist = GetNameList().toNames.sublist(0, 5);
-    } else if (count == 2) {
-      firstlist = GetNameList().toNames.sublist(5, 10);
-    } else if (count == 3) {
-      firstlist = GetNameList().toNames.sublist(10, 15);
-    } else if (count == 4) {
-      firstlist = GetNameList().toNames.sublist(15, 20);
-    }
-    return firstlist;
+  init() {
+    nameSublist = namelist.newListMethod(
+      count: 0,
+    );
+
+    setState(() {});
+    return nameSublist;
+  }
+
+  int calculateListLength({List list = const []}) {
+    sublistButtonsLength = (list.length / 5).ceilToDouble().toInt();
+    log("sublist lenght: $sublistButtonsLength");
+    setState(() {});
+    return sublistButtonsLength;
   }
 
   @override
@@ -37,37 +47,28 @@ class _LearningState extends State<Learning> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text(newListMethod().toString())),
-          Row(
+          Center(child: Text(nameSublist.toString())),
+          Wrap(
             children: [
-              CustomContainer(
-                ontap: () {
-                  count = 1;
-                  setState(() {});
-                },
-                title: "1",
-              ),
-              CustomContainer(
-                ontap: () {
-                  setState(() {});
-                  count = 2;
-                },
-                title: "2",
-              ),
-              CustomContainer(
-                ontap: () {
-                  count = 3;
-                  setState(() {});
-                },
-                title: "3",
-              ),
-              CustomContainer(
-                ontap: () {
-                  count = 4;
-                  setState(() {});
-                },
-                title: "4",
-              ),
+              ...List.generate(sublistButtonsLength, (index) {
+                int index2 = index + 1;
+                return CustomContainer(
+                  ontap: () {
+                    selectedIndex = index;
+                    if (selectedIndex == 0) {
+                      init();
+                    } else {
+                      nameSublist = namelist.newListMethod(
+                          count: nameSublist.length * index,
+                          subListMaxLength: (nameSublist.length * index2));
+                    }
+
+                    setState(() {});
+                  },
+                  title: (index + 1).toString(),
+                  color: selectedIndex == index ? Colors.blue : Colors.amber,
+                );
+              }).toList(),
             ],
           )
         ],
@@ -77,10 +78,14 @@ class _LearningState extends State<Learning> {
 }
 
 class CustomContainer extends StatelessWidget {
-  const CustomContainer({super.key, required this.title, required this.ontap});
+  const CustomContainer(
+      {super.key,
+      required this.title,
+      required this.ontap,
+      this.color = Colors.amber});
   final String title;
   final void Function()? ontap;
-
+  final Color? color;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -89,7 +94,7 @@ class CustomContainer extends StatelessWidget {
         onTap: ontap,
         child: Container(
           decoration: BoxDecoration(
-              color: Colors.amber, borderRadius: BorderRadius.circular(20)),
+              color: color, borderRadius: BorderRadius.circular(20)),
           width: 50,
           height: 50,
           child: Center(child: Text(title.toString())),

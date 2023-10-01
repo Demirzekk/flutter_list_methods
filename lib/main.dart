@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_list_methods/list_methods2.dart';
 import 'package:flutter_list_methods/sublist_example.dart/sublist_page.dart';
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const Learning());
+        home: const LazyPaging());
   }
 }
 
