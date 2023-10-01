@@ -195,7 +195,7 @@ class Methods2 {
     log(result.toString());
   }
 
-  listSublist() {
+ List<String> listSublist() {
     List<String> subNames = [];
     List<String> names = [
       "su",
@@ -211,7 +211,7 @@ class Methods2 {
     subNames = names.sublist(0, 4);
     log(subNames.toString());
 
-    subNames;
+   return subNames;
   }
 }
 
