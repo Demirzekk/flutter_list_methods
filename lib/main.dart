@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_list_methods/list_methods2.dart';
+import 'package:flutter_list_methods/shop_user/user_name_list.dart';
 import 'package:flutter_list_methods/sublist_example.dart/sublist_page.dart';
 
 void main() {
@@ -12,11 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const LazyPaging());
+        home: const UserListPage());
   }
 }
 
