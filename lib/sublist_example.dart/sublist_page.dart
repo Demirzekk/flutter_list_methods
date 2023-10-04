@@ -25,7 +25,7 @@ class _LazyPagingState extends State<LazyPaging> {
 
   init() {
     nameSublist = namelist.newListMethod(
-      count: 0,
+      min: 0,
     );
 
     setState(() {});
@@ -59,8 +59,8 @@ class _LazyPagingState extends State<LazyPaging> {
                       init();
                     } else {
                       nameSublist = namelist.newListMethod(
-                          count: nameSublist.length * index,
-                          subListMaxLength: (nameSublist.length * index2));
+                        min: nameSublist.length * index,
+                      );
                     }
 
                     setState(() {});
