@@ -51,7 +51,7 @@ class _LazyPagingState extends State<LazyPaging> {
           Wrap(
             children: [
               ...List.generate(sublistButtonsLength, (index) {
-                int index2 = index + 1;
+               
                 return CustomContainer(
                   ontap: () {
                     selectedIndex = index;

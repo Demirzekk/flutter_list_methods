@@ -11,26 +11,29 @@ class UserListPage extends StatefulWidget {
 class _UserListPageState extends State<UserListPage> {
   UserNameList names = UserNameList();
   final int countText = 2;
-  List<String> nameSplit = [];
+  List<String> splittedNamesList = [];
   int selectedIndex = 0;
   int beginListLenght = 0;
+  List<int> limitNumbers = [];
+  int limit = 5;
 
   @override
   void initState() {
+    super.initState();
+    limitNumbers = [2, 4, 5, 6, 7, 8, 9, 10, names.userLists.length];
     initFunction();
     calculateListLenght(list: names.userLists);
-    super.initState();
   }
 
   initFunction() {
-    nameSplit = names.allocate(begin: 0);
+    splittedNamesList = names.allocate(begin: 0, limit: limit);
     setState(() {});
 
-    return nameSplit;
+    return splittedNamesList;
   }
 
   int calculateListLenght({List list = const []}) {
-    beginListLenght = (list.length / 5).ceilToDouble().toInt();
+    beginListLenght = (list.length / limit).ceilToDouble().toInt();
     setState(() {});
     return beginListLenght;
   }
@@ -47,20 +50,19 @@ class _UserListPageState extends State<UserListPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(nameSplit.toString()),
+            Text(splittedNamesList.toString()),
             Wrap(
               children: [
                 ...List.generate(beginListLenght, (index) {
-                  int growingIndex = index + 1;
                   return UserCustomContainer(
                     ontap: () {
                       selectedIndex = index;
                       if (selectedIndex == 0) {
                         initFunction();
                       } else {
-                        nameSplit = names.allocate(
-                            begin: nameSplit.length * index,
-                            finish: (nameSplit.length) * growingIndex);
+                        splittedNamesList = names.allocate(
+                            begin: splittedNamesList.length * index,
+                            limit: limit);
                       }
                       setState(() {});
                     },
@@ -72,11 +74,34 @@ class _UserListPageState extends State<UserListPage> {
                 })
               ],
             ),
+            Container(
+              width: 180,
+              height: 50,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.all(4),
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  borderRadius: BorderRadius.circular(10)),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton<int>(
+                    hint: Text("Seçilen Limit: $limit"),
+                    items: limitNumbers
+                        .map((e) => DropdownMenuItem(
+                            value: e, child: Text(e.toString())))
+                        .toList(),
+                    onChanged: (val) {
+                      limit = val ?? 5;
+                      calculateListLenght(list: names.userLists);
+                      setState(() {});
+                    }),
+              ),
+            ),
             const SizedBox(
               height: 200,
             ),
             Text(
-                "  ${selectedIndex + 1}. sayfa  \n bu sayfa : ${nameSplit.length} kişi \n total : ${names.userLists.length} ")
+                "  ${selectedIndex + 1}. sayfa  \n bu sayfa : ${splittedNamesList.length} kişi \n total : ${names.userLists.length} ")
           ],
         ),
       ),

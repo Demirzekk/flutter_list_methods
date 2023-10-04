@@ -1,19 +1,14 @@
 class UserNameList {
-  List<String> allocate({int begin = 0, int finish = 5}) {
+  List<String> allocate({int begin = 0, int limit = 5}) {
     List<String> userAllocate = [];
-    if (begin == 0 && finish == 0) {
-      begin = 0;
-      finish = 5;
-    }
-    if (finish > userLists.length) {
-      finish = userLists.length;
-    }
-    userAllocate = userLists.sublist(begin, finish);
+
+    userAllocate = userLists.sublist(begin,
+        begin + limit > userLists.length ? userLists.length : begin + limit);
     return userAllocate;
   }
 
   List<String> userLists = [
-    "osman",
+    "Yusuf",
     "hamdi",
     "mehmet",
     "rauf",
@@ -39,7 +34,5 @@ class UserNameList {
     "ayşegül",
     "berna",
     "tuğçe",
-    "nazif",
-    "rümeysa",
   ];
 }

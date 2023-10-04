@@ -98,13 +98,14 @@ class Methods2 {
 
   listRemoveAt() {
     final parts = ['el', 'ayak', 'kafa', 'parmak'];
-    final retVal = parts.remove("el");
+    final retVal = parts.removeAt(1);
 
-    log(retVal.toString());
+    log("kaldırılan nesne: $retVal");
+    log(parts.toString());
   }
 
   listRemoveLast() {
-    // son indexi yazdırır
+    // Listenin son elemanın siler listeden
     final parts = <String>['el', 'ayak', 'beden', 'parmak', "kol"];
     final retVal = parts.removeLast();
 
@@ -195,7 +196,7 @@ class Methods2 {
     log(result.toString());
   }
 
- List<String> listSublist() {
+  List<String> listSublist() {
     List<String> subNames = [];
     List<String> names = [
       "su",
@@ -211,8 +212,45 @@ class Methods2 {
     subNames = names.sublist(0, 4);
     log(subNames.toString());
 
-   return subNames;
+    return subNames;
+  }
+
+  List<String> listTake() {
+    List<String> names = [
+      "su",
+      "osman",
+      "ali",
+      "veli",
+      "reşat",
+      "sudenur",
+      "Merve",
+      "Berk",
+      "Kaan"
+    ];
+    names = names.take(40).map((e) => e).toList();
+
+    return names;
+  }
+
+  List<String> listWhere() {
+    // filtreleme yapmak için kullanılabilir
+    List<String> names = [
+      "su",
+      "osman",
+      "ali",
+      "veli",
+      "reşat",
+      "sudenur",
+      "Merve",
+      "Berk",
+      "Kaan",
+      "BERK"
+    ];
+    names = names
+        .where((element) =>
+            (element.toLowerCase()).contains("bErK".toLowerCase()) == true)
+        .toList();
+
+    return names;
   }
 }
-
-//TODO!!! 1,2,3 adında 3 buton olacak ve bu butonlara batınca 20 kişilik listenin 5er elemanını ekrana basacak

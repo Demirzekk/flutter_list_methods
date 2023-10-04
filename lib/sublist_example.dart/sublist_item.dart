@@ -45,12 +45,5 @@ class GetNameList {
     "muzaffer",
     "ayşe",
     "elif",
-    "hasan",
-    "halis",
-    "şükrü",
-    "fatma",
-    "negis",
   ];
-
-
 }
