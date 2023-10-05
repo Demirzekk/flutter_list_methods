@@ -125,7 +125,15 @@ class Methods2 {
   listremoveWhere() {
     final numbers = <String>['bir', 'iki', 'üç', 'dört'];
     numbers.removeWhere((item) => item.length <= 3);
-
+    List<Map<String, dynamic>> myList = [
+      {"isim": "Ahmet", "yas": 10},
+      {"isim": "Mehmet", "yas": 18},
+      {"isim": "Ahmet", "yas": 6},
+      {"isim": "Hasan", "yas": 22},
+      {"isim": "Süleyman", "yas": 17},
+      {"isim": "Can", "yas": 19},
+    ];
+    myList.removeWhere((element) => element["yas"] >= 18);
     log(numbers.toString());
   }
 
