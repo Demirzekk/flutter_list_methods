@@ -13,5 +13,7 @@
 13. isEmpty
 14. isNotEmpty
 16. length
+17. padLetf/padRight
+18. indexOf/lastIndexOf
 
 

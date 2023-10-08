@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_list_methods/string_methods/string_methods.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -44,8 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 150,
                 height: 45,
                 margin: const EdgeInsets.symmetric(vertical: 12),
-                child: ElevatedButton(
-                    onPressed: myTrimExample, child: const Text("Try it"))),
+                child: const ElevatedButton(
+                    onPressed: myIndexOf, child: Text("Try it"))),
           ],
         ),
       ),
@@ -76,8 +78,51 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     log(newRules);
   }
+
+  myCompareTo() {
+    List<String> list = [
+      "Ahmet",
+      "Muhsin",
+      "yavuz",
+      "can",
+      "Davuuut",
+    ];
+    list.sort((a, b) => a[0].toLowerCase().compareTo(b[0].toLowerCase()));
+
+    log("İsim sırası: $list");
+  }
 }
 
+myCodeUnits() {
+  String sample = "Turan";
+
+  log(utf8.decode([84, 117, 114, 97, 110]).toString()); //Turan
+}
+
+myPadleft() {
+  String sample = "Deneme";
+  var result = sample.padLeft(sample.length + 1, "Son ");
+  var res = sample.padRight(sample.length + 1, " Son");
+  log(result);
+}
+
+myIndexOf2() {
+  String sample = "Deneme";
+  // verilen pattern string ifadede ilk hangi indexte
+  var result = sample.indexOf("e");
+  // verilen pattern string ifadede son hangi indexte
+  var result2 = sample.lastIndexOf("e");
+  log(result2.toString());
+}
+
+myIndexOf() {
+  List<String> list = ["Ahmet", "Muhsin", "yavuz", "can", "Davuuut", "yavuz"];
+  // verilen pattern string ifadede ilk hangi indexte
+  var result = list.indexOf("Yavuz");
+  // verilen pattern string ifadede son hangi indexte
+  var result2 = list.lastIndexOf("yavuz");
+  log(result2.toString());
+}
 //TODO 6 haneli sayıları eşleyen regex
 
 
