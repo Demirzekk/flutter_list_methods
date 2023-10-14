@@ -2,7 +2,10 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_list_methods/reinforcemente_xample.dart';
 import 'package:flutter_list_methods/string_methods/string_methods.dart';
+
+import '../list_methods2.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -24,6 +27,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final ReinforcementExample exampledata = ReinforcementExample.instance;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("String Methods"),
@@ -46,8 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 150,
                 height: 45,
                 margin: const EdgeInsets.symmetric(vertical: 12),
-                child: const ElevatedButton(
-                    onPressed: myIndexOf, child: Text("Try it"))),
+                child: ElevatedButton(
+                    onPressed: exampledata.NotelistEvery(),
+                    child: const Text("Try it"))),
           ],
         ),
       ),
@@ -123,14 +129,7 @@ myIndexOf() {
   var result2 = list.lastIndexOf("yavuz");
   log(result2.toString());
 }
-//TODO 6 haneli sayıları eşleyen regex
+
+////// örnekler:
 
 
-//TODO ÖDEV !!!!!!!!!!!!
-//
-//iban numarası TR zorunluluğu, kullanıcı koymasa dahi tr olacak. 
-// 16 rakamlı olmalı
-// başta 0 olmamalı
-// 5001 ile bitmeli
-// eğer 5001 ile bitmezse teb bankasıdır.
-// 4 rakamda birbirinden ayrı olmalı

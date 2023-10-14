@@ -49,7 +49,7 @@ class StringMethods {
   myReplaceFirst() {
     String sample = "NAME bey, NAME hoşgeldiniz!";
     String name = "Turan";
-    var result = sample.replaceFirst("NAME", name);
+    var result = sample.replaceAll("NAME", name);
     log("Soyadı: $result");
   }
 
