@@ -5,7 +5,7 @@ class Methods2 {
   listIndexOf() {
     // bir listedeki belirtilen elementin ilk dizini yoksa return -1 gelir
     final notes = ["do", "re" "mi", "fa", "re", "re", "re", "re ", "do"];
-    var sonuc = notes.indexOf("fa");
+    var sonuc = notes.indexOf("re");
     log(sonuc.toString());
   }
 
@@ -26,7 +26,8 @@ class Methods2 {
   listinsertAll() {
     final number = [1, 2, 3, 4, 5, 6];
     final items = [5, 7, 9, 1];
-    var not = number.insertAll(0, items);
+    number.insertAll(0, items);
+    log(number.toString());
   }
 
   listjoin() {

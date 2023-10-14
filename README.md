@@ -1,13 +1,13 @@
 
-1. add
-2. addAll
-3. any
-4. asMap
-5. cast
-6. clear
-7. contains
-8. elementAt
-9. every
+1. add ---
+2. addAll---
+3. any---
+4. asMap---
+5. cast---
+6. clear---
+7. contains ==> where ile kompleks yine bak
+8. elementAt --
+9. every--
 10. expand
 11. fillRange
 12. first Where

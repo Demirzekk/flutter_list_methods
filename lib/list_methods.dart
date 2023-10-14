@@ -30,18 +30,18 @@ class Methods {
 
   listAsMap() {
     const list2 = ["Ekmek", "su", "süt", "peynir"];
-    //listenin içinde sağlanan koşul varsa yada yoksa bool değer dönderir
-    // map = list.asMap();
-    // log("sonuc $map");
+    
+    var map = list2.asMap();
+    log("sonuc $map");
   }
 
-  listCast() {
-    List? list3 = [1, 2, 3];
-    const list2 = ["Ekmek", "su", "süt", "peynir"];
-    //Tipi belli olmayan bir listenin belli tipte geleceği iddia ediyorsun
-    List<int> sonuc = list3.cast<int>();
-    log("sonuc ${sonuc.toString()}");
-  }
+  // listCast() {
+  //   List? list3 = [1, 2, 3];
+  //   const list2 = ["Ekmek", "su", "süt", "peynir"];
+   
+  //   List<int> sonuc = list3.cast<int>();
+  //   log("sonuc ${sonuc.toString()}");
+  // }
 
   listClear() {
     list = [];
@@ -117,6 +117,4 @@ class Methods {
     var sonuc = list.getRange(2, 4);
     log(sonuc.toString());
   }
-
-
 }
