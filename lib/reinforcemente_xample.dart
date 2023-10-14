@@ -1,5 +1,5 @@
-import 'dart:convert';
 import 'dart:developer';
+import 'dart:math' hide log;
 
 class ReinforcementExample {
   static ReinforcementExample? _instance;
@@ -8,19 +8,22 @@ class ReinforcementExample {
   ReinforcementExample._();
   factory ReinforcementExample() => _instance ??= ReinforcementExample._();
 
+//TODO Bir sayının iban olup olmadığını ve ibansa bu işlemi yapmasını sağlayın
+//   String iban = "18256598572232895001";  expected:  "TR 1825 6598 4432 5789 5001";
+
 //örnek 1
 
   myIbanControl() {
     String iban = "1825 6598 5789 5001";
-    var alm = iban.split(" ").toSet().join("");
-    var kame = alm.padLeft(0, "TR");
+    var alm = iban.split(" ").join("");
+    String kame = "TR$alm";
     log(kame);
   }
 
   /// bir tam sayı listesindeki elemanları toplayan program +
 
   totalInteger() {
-    List<int> integerList = [458, 526, 12, 111, 16];
+    List<int> integerList = [4, 6, 12, 11, 16];
     int total = integerList.reduce((value, element) => value + element);
     log(total.toString());
   }
@@ -30,6 +33,7 @@ class ReinforcementExample {
     List<int> integerList = [458, 526, 12, 111, 16];
 
     integerList.sort();
+
     int startValue = integerList.first;
     int endValue = integerList.last;
     log("$startValue , $endValue");
@@ -51,18 +55,33 @@ class ReinforcementExample {
 
 // - Bir liste içindeki tüm tek ve çift sayıları ayıran programı yazın.
 
-  oddAndEven() {
-    int tekSayi = 2 * 1;
+  void oddAndEven() {
+    List<int> numbers = [11, 23, 34, 47, 55, 66];
+    List<int> evenNumbers = [];
+    List<int> oddNumbers = [];
+    oddNumbers = numbers.where((e) => e.isOdd).toList();
+    evenNumbers = numbers.where((e) => e.isEven).toList();
+
+    // for (int i = 0; i < numbers.length; i++) {
+    //   if (numbers[i] % 2 == 0) {
+    //     oddNumbers.add(numbers[i]);
+    //   } else {
+    //     evenNumbers.add(numbers[i]);
+    //   }
+    // }
+    log("Tek sayılar: ${evenNumbers.toString()} ");
+    log("Çift sayılar: ${oddNumbers.toString()} ");
   }
 
 // - Bir tamsayı listesinin ortalamasını hesaplayan programı yazın.  +
   numberAvarage() {
-    List<int> integerList = [420, 520, 630, 520, 920];
+    List<int> integerList = [4, 5, 6, 10, 20, 2];
     int total = integerList.reduce((value, element) => value + element);
     int numberLenght = integerList.length;
-    int numAvaragetotal = total ~/ numberLenght;
+    final double numAvaragetotal = total / numberLenght;
+// Double bir sayının noktadan sonra son 2 rakamını gösteren method toStringAsFixed(2)
 
-    log(numAvaragetotal.toString());
+    log(numAvaragetotal.toStringAsFixed(2));
   }
 
 // - Bir sayı listesini büyükten küçüğe sıralayan programı yazın.  ( -)
@@ -77,8 +96,18 @@ class ReinforcementExample {
 // - Bir listede belirli bir öğenin ilk indeksini bulan  programı yazın.   +
 
   witchIndex() {
-    List<String> carList = ["bmw", "mercedes", "audi", "ford", "mitsubishi"];
-    log(carList.first);
+    List<String> carList = [
+      "bmw",
+      "mercedes",
+      "audi",
+      "ford",
+      "mitsubishi",
+      "audi"
+    ];
+    var result = carList.indexOf(
+      "audi",
+    );
+    log(result.toString());
   }
 
 // - İki liste verildiğinde, bu iki listeyi birleştiren programı yazın.   +
@@ -105,7 +134,7 @@ class ReinforcementExample {
   searchItem() {
     List<String> homeaksesuar = [
       "kapı",
-      "koltuk",
+      "koLtuk",
       "tv",
       "masa",
       "kanepe",
@@ -114,8 +143,8 @@ class ReinforcementExample {
       "lamba",
       "kapacak"
     ];
-    var aksesuar = homeaksesuar
-        .where((element) => element.contains("KOLTU".toLowerCase()));
+    var aksesuar = homeaksesuar.where(
+        (element) => element.toLowerCase().contains("KOLTU".toLowerCase()));
     log(aksesuar.toString());
   }
 
@@ -129,7 +158,7 @@ class ReinforcementExample {
 
 // denemeler
 
- NotelistEvery() {
+  void notelistEvery() {
     List<double> notesList = [0.1, 0.5, 0.77, 0.99, 2.6];
 
     var zaman = notesList.every((element) => element <= 3);
@@ -141,7 +170,9 @@ class ReinforcementExample {
 //   Soru 1) Mail@gmail. com => bu mailde ilk harf yanlışlıkla büyük girilmiş
 //ve . com arasında boşluk bırakılmış. mail@gmail.com şeklinde tekrar console a yazdırınız.
 
-  ControlExample() {}
+  void controlExample() {
+    //TODO!!
+  }
 
 // Soru2) DaRt ve daRT kelimeleri literatür olarak aynı şeyi ifade etmekte.
 //Ama bilgisayar ortamında DaRt==daRT=>false değeri döndermektedir. True değerini göndermesini sağlayın.
@@ -163,9 +194,11 @@ class ReinforcementExample {
     log(nameMostLengh.last.toString());
   }
 
-// Soru4) +(90) 0505 555 55 55 => bu numarayı console’a 90505555555 şeklinde yazdırınız ++++
+// Soru4) +(90) 505 555 55 55 => bu numarayı console’a 90505555555 şeklinde yazdırınız ++++
   unifiedNumber() {
-    String number = "+(90) 0505 555 55 55";
+    // regex learn in 20 munites
+    //https://www.youtube.com/watch?v=rhzKDrUiJVk&t=748s&ab_channel=WebDevSimplified
+    String number = "+(90) 505 555 55 55";
     final reg = RegExp(r'(\d+)');
     var numberResult = reg
         .allMatches(number)
@@ -178,9 +211,10 @@ class ReinforcementExample {
 
 // Soru5) +905559095090 bu numaranın Türkiye numarası olup olmadığını doğrulayınız  +++
   numberControl() {
-    String number = "555 909 5090";
+    String number = "90555 909 5090";
 
-    bool numberResult = number.startsWith("+90", 0);
+    bool numberResult = number.replaceAll("+", "").startsWith("90", 0);
+    log("Türkiye numarası mı? ${numberResult == false ? "hayır" : "evet"}");
     if (numberResult == false) {
       number = "+90 $number";
     }

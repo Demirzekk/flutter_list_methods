@@ -7,14 +7,14 @@ import 'package:flutter_list_methods/string_methods/string_methods.dart';
 
 import '../list_methods2.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class MyHomePage2 extends StatefulWidget {
+  const MyHomePage2({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage2> createState() => _MyHomePage2State();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePage2State extends State<MyHomePage2> {
   String text = "welcome to flutter";
 
   List<String> list = [
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 45,
                 margin: const EdgeInsets.symmetric(vertical: 12),
                 child: ElevatedButton(
-                    onPressed: exampledata.NotelistEvery(),
+                    onPressed: exampledata.numberControl,
                     child: const Text("Try it"))),
           ],
         ),
