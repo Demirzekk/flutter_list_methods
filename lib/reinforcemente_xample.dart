@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:math' hide log;
 
@@ -8,16 +9,14 @@ class ReinforcementExample {
   ReinforcementExample._();
   factory ReinforcementExample() => _instance ??= ReinforcementExample._();
 
-//TODO Bir sayının iban olup olmadığını ve ibansa bu işlemi yapmasını sağlayın
+//TODO Bir sayının iban olup olmadığını ve ibansa bu işlemi yapmasını sağlayın --------------
 //   String iban = "18256598572232895001";  expected:  "TR 1825 6598 4432 5789 5001";
 
-//örnek 1
-
   myIbanControl() {
-    String iban = "1825 6598 5789 5001";
-    var alm = iban.split(" ").join("");
-    String kame = "TR$alm";
-    log(kame);
+    String iban = "18256598572232895001";
+    List<String> ibans = iban.split("").sublist(0, 16);
+    var convertToString = ibans.toString();
+    log(convertToString.toString());
   }
 
   /// bir tam sayı listesindeki elemanları toplayan program +
@@ -171,7 +170,12 @@ class ReinforcementExample {
 //ve . com arasında boşluk bırakılmış. mail@gmail.com şeklinde tekrar console a yazdırınız.
 
   void controlExample() {
-    //TODO!!
+    String mail = "Mail@gmail. com";
+
+    var mailNotSpace = mail.replaceAll(" ", "").toLowerCase();
+    log(mailNotSpace.toString());
+
+    ///  TODO = sadece belirli bir kelimenin belirli bir indexini bulmak için veya değiştirmek için?
   }
 
 // Soru2) DaRt ve daRT kelimeleri literatür olarak aynı şeyi ifade etmekte.
@@ -219,5 +223,70 @@ class ReinforcementExample {
       number = "+90 $number";
     }
     log(number);
+  }
+
+  deneme() {
+    List<int> list = [5, 9, 20, 35, 246];
+    var total = list.takeWhile((value) => value < 35);
+    log(total.toString());
+  }
+  //Soru 6) ana, kelek, pide, ada, yapay gibi kelimler palindrom kelimelerdir. Yani terstende okununca aynı => +++---eksik var
+  //kelime ile karşılaşılır. Verilen bir string kelimenin palindrome bir kelime olup olmadığını bulan dart logicini yazınız.
+
+  palidrome() {
+    List<String> writePalidrome = ["ana", "kelek", "pideler", "ada", "yapay"];
+    var here = writePalidrome.join(" ");
+    var newHere = String.fromCharCodes(here.runes.toList().reversed);
+    log(newHere);
+    if (here == newHere) {
+      log("bütün liste elemanları polidromdur ");
+    } else {
+      log("listenin bazı elemanları polidrom değildir mesela ");
+    }
+  }
+
+//Soru 7) Bir liste içinde bir nesnenin kaç kez tekranlandığını bulan dart logicini yazınız. +++  =>>> bi daha bak
+//Örnek; [“kaş”,”Kuşadası”,”Lüleburgaz”,”kaş”,”Şişli”]; //Expected=> kaş kelimesi 2 kez geçmektedir.
+
+  repeatedWords() {
+    List<String> objectNames = [
+      "kaş",
+      "kuşadası",
+      "lüleburgaz",
+      "kaş",
+      "şişli"
+    ];
+    objectNames.forEach((element) {
+      if (objectNames.contains("kaş")) {
+        log("kaş kelimesi 2 kez kullanılmıştır");
+      }
+    });
+  }
+
+//Soru 8) Bir isim listesini stringe çevirin ve arasına “-“ karakterini koyun. +++ Stringe çevrilmiyor
+// Örnek; [“kaş”,”Kuşadası”,”Lüleburgaz”,,”Şişli”]; Expected=> kaş-kuşadası-lüleburgaz-Şişli
+  nameList() {
+    List<String> name = ["ali", "ayşe", "fatma", "kazım", "firuze"];
+    var convertToString = name.toString().split(",").join(" -");
+
+    log(convertToString);
+  }
+
+//Soru 9) “0.8” ve “0.9” string sayılarını double’a çevirip toplama yapınız  ----
+  convertToDouble() {
+    String firstNumber = "0.8";
+    String huveNumber = "0,9";
+
+    String num = "0.8";
+    var forFirstConvert = double.parse(num);
+  }
+//Soru 10) Bir diziyi belli bir karakterden sonra bölerek ikisinide arasında boşluk
+//olacak sekilde örnekteki beklendiği gibi konsola yazdırınız. Örnek; ahmet*muhsin => “Ahmet Muhsin”
+
+  newStringedit() {
+    String name = " ahmet*muhsin";
+    var here = name.replaceAll("*", " ");
+
+    log(here);
   }
 }
