@@ -230,19 +230,41 @@ class ReinforcementExample {
     var total = list.takeWhile((value) => value < 35);
     log(total.toString());
   }
+
   //Soru 6) ana, kelek, pide, ada, yapay gibi kelimler palindrom kelimelerdir. Yani terstende okununca aynı => +++---eksik var
   //kelime ile karşılaşılır. Verilen bir string kelimenin palindrome bir kelime olup olmadığını bulan dart logicini yazınız.
+  reversedExample() {
+    List<String> words = ["ana", "kelek", "pideler", "ada", "yapay"];
+    String word = "Kanape";
+    String result = "";
+    for (int i = word.split("").join("").length - 1; i >= 0; i--) {
+      result += word[i];
+    }
+    log(result);
+    log(words.reversed.toString());
+  }
 
   palidrome() {
-    List<String> writePalidrome = ["ana", "kelek", "pideler", "ada", "yapay"];
-    var here = writePalidrome.join(" ");
-    var newHere = String.fromCharCodes(here.runes.toList().reversed);
-    log(newHere);
-    if (here == newHere) {
-      log("bütün liste elemanları polidromdur ");
-    } else {
-      log("listenin bazı elemanları polidrom değildir mesela ");
-    }
+    List<String> words = ["ana", "kelek", "pideler", "ada", "yapay"];
+    // Where ile nasıl yapılır
+    words.where((element) {
+      if (element == element.split("").reversed.join("")) {
+        log("$element :  palindrom bir kelimedir");
+      } else {
+        log("$element :  palindrom bir kelime değildir!");
+      }
+      return true;
+    }).toList();
+// // for ile yapımı
+//     for (int i = 0; i < words.length; i++) {
+//       final word = words[i].split("").reversed.join("");
+
+//       if (word == words[i]) {
+//         log("$word :  palindrom bir kelimedir");
+//       } else {
+//         log("${words[i]} :  palindrom bir kelime değildir!");
+//       }
+//     }
   }
 
 //Soru 7) Bir liste içinde bir nesnenin kaç kez tekranlandığını bulan dart logicini yazınız. +++  =>>> bi daha bak
@@ -254,22 +276,52 @@ class ReinforcementExample {
       "kuşadası",
       "lüleburgaz",
       "kaş",
-      "şişli"
+      "şişli",
+      "kaş",
+      "alanya",
+      "bodrum",
+      "alanya"
     ];
-    objectNames.forEach((element) {
-      if (objectNames.contains("kaş")) {
-        log("kaş kelimesi 2 kez kullanılmıştır");
+    Map<String, int> count = {};
+
+    for (String item in objectNames) {
+      if (count.containsKey(item)) {
+        count[item] = (count[item]! + 1);
+      } else {
+        count[item] = 1;
       }
+    }
+    count.forEach((key, value) {
+      log("$key kelimesi $value defa geçmektedir");
     });
+    // int count = 0;
+    // objectNames.forEach((element) {
+    //   if (element == "kuşadası") {
+    //     count++;
+    //     log("$element adı $count defa geçiyor");
+    //   }
+    // });
   }
 
 //Soru 8) Bir isim listesini stringe çevirin ve arasına “-“ karakterini koyun. +++ Stringe çevrilmiyor
 // Örnek; [“kaş”,”Kuşadası”,”Lüleburgaz”,,”Şişli”]; Expected=> kaş-kuşadası-lüleburgaz-Şişli
   nameList() {
     List<String> name = ["ali", "ayşe", "fatma", "kazım", "firuze"];
-    var convertToString = name.toString().split(",").join(" -");
-
-    log(convertToString);
+    // var convertToString = name.join(" ");
+    String result = "";
+    for (int i = 0; i < name.length; i++) {
+      if (i == 0) {
+        result += name[i];
+      } else {
+        result += "-${name[i]}";
+      }
+    }
+    List<int> numbers = [2, 3, 5, 6, 7, 9, 2, 4, 5];
+    int sum = 0;
+    for (int i = 0; i < numbers.length; i++) {
+      sum = sum + numbers[i];
+    }
+    log(sum.toString());
   }
 
 //Soru 9) “0.8” ve “0.9” string sayılarını double’a çevirip toplama yapınız  ----

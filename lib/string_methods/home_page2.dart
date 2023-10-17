@@ -52,7 +52,11 @@ class _MyHomePage2State extends State<MyHomePage2> {
                 height: 45,
                 margin: const EdgeInsets.symmetric(vertical: 12),
                 child: ElevatedButton(
-                    onPressed: exampledata.myIbanControl,
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    onPressed: exampledata.nameList,
                     child: const Text("Try it"))),
           ],
         ),
