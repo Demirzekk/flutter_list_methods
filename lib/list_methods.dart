@@ -30,7 +30,7 @@ class Methods {
 
   listAsMap() {
     const list2 = ["Ekmek", "su", "süt", "peynir"];
-    
+
     var map = list2.asMap();
     log("sonuc $map");
   }
@@ -38,7 +38,7 @@ class Methods {
   // listCast() {
   //   List? list3 = [1, 2, 3];
   //   const list2 = ["Ekmek", "su", "süt", "peynir"];
-   
+
   //   List<int> sonuc = list3.cast<int>();
   //   log("sonuc ${sonuc.toString()}");
   // }
@@ -108,9 +108,8 @@ class Methods {
   }
 
   listForeach() {
-    list.forEach((element) {
-      log(element);
-    });
+    List<String> breakfast = ["su", "ekmek"];
+    breakfast.forEach(log);
   }
 
   listGetRange() {
