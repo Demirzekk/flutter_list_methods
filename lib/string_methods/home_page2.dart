@@ -58,7 +58,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    onPressed: exampledata.history,
+                    onPressed: exampledata.countriesMap,
                     child: const Text("Try it"))),
           ],
         ),

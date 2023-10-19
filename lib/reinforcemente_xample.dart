@@ -316,6 +316,9 @@ class ReinforcementExample {
         result += "-${name[i]}";
       }
     }
+  }
+
+  sumNumbers() {
     List<int> numbers = [2, 3, 5, 6, 7, 9, 2, 4, 5];
     int sum = 0;
     for (int i = 0; i < numbers.length; i++) {
@@ -324,22 +327,30 @@ class ReinforcementExample {
     log(sum.toString());
   }
 
-//Soru 9) “0.8” ve “0.9” string sayılarını double’a çevirip toplama yapınız  ----
+//Soru 9) “0.8” ve “0.9” string sayılarını double’a çevirip toplama yapınız
   convertToDouble() {
-    String firstNumber = "0.8";
-    String huveNumber = "0,9";
+    String firstNum = "0.8.0";
+    String secondNum = "0,4"; // double sayı
+    double parsefirstNumber =
+        double.tryParse(firstNum.replaceAll(".", "")) ?? 0;
+    double parseSecondNumber = double.parse(secondNum.replaceAll(",", "."));
+    String sum = (parseSecondNumber + parsefirstNumber).toStringAsFixed(1);
 
-    String num = "0.8";
-    var forFirstConvert = double.parse(num);
+    log("Double sayıların toplamı: $sum");
+
+    // var forFirstConvert = double.parse(num);
   }
 //Soru 10) Bir diziyi belli bir karakterden sonra bölerek ikisinide arasında boşluk
 //olacak sekilde örnekteki beklendiği gibi konsola yazdırınız. Örnek; ahmet*muhsin => “Ahmet Muhsin”
 
-  newStringedit() {
-    String name = " ahmet*muhsin";
-    var here = name.replaceAll("*", " ");
-
-    log(here);
+  newStringEdit() {
+    String name = " ahmet?muhsin";
+    String firstName = name.split("?").first;
+    String lastName = name.split("?").last;
+    firstName = firstName.trim().substring(0, 1).toUpperCase() +
+        firstName.trim().substring(1);
+    lastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
+    log("$firstName $lastName");
   }
 //  10 - Bir liste içinde tekrar eden elemanları bulan bir Flutter fonksiyonu yazın. ----
 //Örneğin, [1, 2, 3, 2, 4, 5, 5] listesinde tekrar eden elemanlar [2, 5] olmalıdır.
@@ -349,14 +360,14 @@ class ReinforcementExample {
   }
 
 //11 - Verilen iki liste (List) içeriğini birleştirip yeni bir liste oluşturan bir Flutter fonksiyonu yazın.   +++
-// Örneğin: List<int> list1 = [1, 2, 3]; List<int> list2 = [4, 5, 6]; sonucunda [1, 2, 3, 4, 5, 6] listesini döndüren bir fonksiyon yazın.
+// Örneğin: List<int> list1 = [1, 2, 3,4]; List<int> list2 = [4,4, 5, 6]; sonucunda [1, 2, 3, 4, 5, 6] listesini döndüren bir fonksiyon yazın.
 
   unifiedList() {
     List<int> list1 = [1, 2, 3];
     List<int> list2 = [4, 5, 6];
 
     list1.addAll(list2);
-    log(list1.toString());
+    log(list1.toSet().toString());
   }
 
 // 12* Verilen bir dizeyi (string) parçalayarak kelime listesine dönüştüren bir Flutter fonksiyonu yazın. +++++
@@ -370,24 +381,26 @@ class ReinforcementExample {
 // 13* Bir listede bir sayının kaç tane tek kaç tane çift sayı olduğunu kontrol eden dart kodunu yazınız.
 // [1,3,4,6,7] =  Expected =>2 adet çift 3 adet tek sayı vardır.  +++
   oddAndeven() {
-    int oddNumbers = 0;
-    int evenNumbers = 0;
+    List<int> oddNumbersList = [];
+    List<int> evenNumbersList = [];
     List<int> numbers = [1, 3, 4, 6, 7, 9, 11];
 
-    oddNumbers = numbers.where((element) => element.isOdd).length;
-    evenNumbers = numbers.where((element) => element.isEven).length;
-    log("$oddNumbers tane tek sayı vardır.");
-    log("$evenNumbers tane tek sayı vardır.");
+    // oddNumbers = numbers.where((element) => element.isOdd).length;
+    // evenNumbers = numbers.where((element) => element.isEven).length;
+    // log("$oddNumbers tane tek sayı vardır.");
+    // log("$evenNumbers tane çift sayı vardır.");
 
     //bunada bi bak****************
 
-    // for (var i = 0; i < numbers.length; i++) {
-    //   if (numbers[i].isOdd) {
-    //     log("$oddNumbers tane çift sayı vardır");
-    //     evenNumbers++;
-    //     log("{$evenNumbers} tane tek sayı vardır");
-    //   } else if (numbers[i].isEven) {}
-    // }
+    for (var i = 0; i < numbers.length; i++) {
+      if (numbers[i].isOdd) {
+        oddNumbersList.add(numbers[i]);
+      } else if (numbers[i].isEven) {
+        evenNumbersList.add(numbers[i]);
+      }
+    }
+    log("${evenNumbersList.length} tane tek sayı vardır. Bu sayılar ${evenNumbersList.toString()}");
+    log("${oddNumbersList.length} tane çift sayı vardır.  Bu sayılar ${oddNumbersList.toString()}");
   }
 
 //14   - [1,2,3,4,5,6,7]ve [3,4,5,7,8,9]  listelerinde aynı elemanları bulup yazdırınız. Expected => [3,4,5,7] -----
@@ -395,13 +408,23 @@ class ReinforcementExample {
   similarCode() {
     List<int> list1 = [1, 2, 3, 4, 5, 6, 7];
     List<int> list2 = [3, 4, 5, 7, 8, 9];
+
     List<int> similarList = [];
-    list1.forEach((element) {
-      if (element == list2) {
-        similarList.add(element);
-      }
-      log(similarList.toString());
-    });
+
+    // for (int element in list1) {
+    //   if (list2.contains(element)) {
+    //     similarList.add(element);
+    //   }
+    // }
+    // for (int i = 0; i < list1.length; i++) {
+    //   if (list2.contains(list1[i])) {
+    //     similarList.add(list1[i]);
+    //   }
+    // }
+
+    similarList = list1.where((element) => list2.contains(element)).toList();
+    log(similarList.toString());
+    log("Birinci listenin elemanları: ${list1.toString()}\nİkinci listenin elemanları: ${list2.toString()}");
   }
 
 // 15- 20102023 sayısını 20-10-2023’e çevirin
@@ -438,19 +461,20 @@ class ReinforcementExample {
       "Türkiye": "Ankara",
       "Romanya": ""
     };
+    Map<String, dynamic> map = countryCapital.map((key, value) {
+      if (value != "") {
+        return MapEntry(key, value);
+      }
+      return const MapEntry("", "");
+    });
+    map.removeWhere((key, value) => key == "");
+    map.map((key, value) {
+      log("$key = $value");
+      return MapEntry(key, value);
+    });
 
-    countryCapital.removeWhere((key, value) => value.isNotEmpty == false);
+    // countryCapital.removeWhere((key, value) => value.isNotEmpty == false);
 
-    log(countryCapital.toString());
-
-    // bir daha bak******
-
-    // for (var i = 0; i < countryCapital.length; i++) {
-    //   if (countryCapital.values.isNotEmpty == true) {
-    //     counterWrite = countryCapital.values.toString();
-
-    //     log(counterWrite);
-    //   }
-    // }
+    // log(countryCapital.toString());
   }
 }
