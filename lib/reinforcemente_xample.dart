@@ -341,4 +341,116 @@ class ReinforcementExample {
 
     log(here);
   }
+//  10 - Bir liste içinde tekrar eden elemanları bulan bir Flutter fonksiyonu yazın. ----
+//Örneğin, [1, 2, 3, 2, 4, 5, 5] listesinde tekrar eden elemanlar [2, 5] olmalıdır.
+
+  againNumbers() {
+    List<int> numbers = [1, 2, 3, 2, 4, 5];
+  }
+
+//11 - Verilen iki liste (List) içeriğini birleştirip yeni bir liste oluşturan bir Flutter fonksiyonu yazın.   +++
+// Örneğin: List<int> list1 = [1, 2, 3]; List<int> list2 = [4, 5, 6]; sonucunda [1, 2, 3, 4, 5, 6] listesini döndüren bir fonksiyon yazın.
+
+  unifiedList() {
+    List<int> list1 = [1, 2, 3];
+    List<int> list2 = [4, 5, 6];
+
+    list1.addAll(list2);
+    log(list1.toString());
+  }
+
+// 12* Verilen bir dizeyi (string) parçalayarak kelime listesine dönüştüren bir Flutter fonksiyonu yazın. +++++
+//Örneğin, "Bu bir Flutter algoritma sorusu" dizesini ["Bu", "bir", "Flutter", "algoritma", "sorusu"] şeklinde bir liste haline getiren bir fonksiyon yazın.
+  splitedWods() {
+    String words = "Bu bir flutter algoritma sorusu";
+    var splited = words.split(" ");
+    log(splited.toString());
+  }
+
+// 13* Bir listede bir sayının kaç tane tek kaç tane çift sayı olduğunu kontrol eden dart kodunu yazınız.
+// [1,3,4,6,7] =  Expected =>2 adet çift 3 adet tek sayı vardır.  +++
+  oddAndeven() {
+    int oddNumbers = 0;
+    int evenNumbers = 0;
+    List<int> numbers = [1, 3, 4, 6, 7, 9, 11];
+
+    oddNumbers = numbers.where((element) => element.isOdd).length;
+    evenNumbers = numbers.where((element) => element.isEven).length;
+    log("$oddNumbers tane tek sayı vardır.");
+    log("$evenNumbers tane tek sayı vardır.");
+
+    //bunada bi bak****************
+
+    // for (var i = 0; i < numbers.length; i++) {
+    //   if (numbers[i].isOdd) {
+    //     log("$oddNumbers tane çift sayı vardır");
+    //     evenNumbers++;
+    //     log("{$evenNumbers} tane tek sayı vardır");
+    //   } else if (numbers[i].isEven) {}
+    // }
+  }
+
+//14   - [1,2,3,4,5,6,7]ve [3,4,5,7,8,9]  listelerinde aynı elemanları bulup yazdırınız. Expected => [3,4,5,7] -----
+
+  similarCode() {
+    List<int> list1 = [1, 2, 3, 4, 5, 6, 7];
+    List<int> list2 = [3, 4, 5, 7, 8, 9];
+    List<int> similarList = [];
+    list1.forEach((element) {
+      if (element == list2) {
+        similarList.add(element);
+      }
+      log(similarList.toString());
+    });
+  }
+
+// 15- 20102023 sayısını 20-10-2023’e çevirin
+
+  history() {
+    String historyString = "20102023";
+    String day = "";
+    String mount = "";
+    String year = "";
+    day = historyString.substring(0, 2);
+    mount = historyString.substring(2, 4);
+    year = historyString.substring(4, 8);
+
+    log("$day - $mount - $year");
+  }
+
+//16 - “Ben flutter developerım” cümlesini “Ben Flutter Developerım” olarak değiştiriniz ----
+
+  neywWrite() {
+    String dev = "ben flutter developerım";
+    var run = dev.split(" ").where((element) => element == element);
+    log(run.toString());
+  }
+
+// 17- Map<String, String> countryCapital = {  'USA': 'Washington, D.C.', 'India': 'New Delhi',   ++++
+// 'China': ‘’,’Türkiye’:’Ankara’,’Romanya’:’’}; bu map yapısında valuesı boş olmayan değerleri yazdırınız.
+//  Expected=> Türkiye = Ankara, India = New Delhi
+
+  countriesMap() {
+    Map<String, String> countryCapital = {
+      'USA': 'Washington, D.C.',
+      'India': 'New Delhi',
+      'China': "",
+      "Türkiye": "Ankara",
+      "Romanya": ""
+    };
+
+    countryCapital.removeWhere((key, value) => value.isNotEmpty == false);
+
+    log(countryCapital.toString());
+
+    // bir daha bak******
+
+    // for (var i = 0; i < countryCapital.length; i++) {
+    //   if (countryCapital.values.isNotEmpty == true) {
+    //     counterWrite = countryCapital.values.toString();
+
+    //     log(counterWrite);
+    //   }
+    // }
+  }
 }

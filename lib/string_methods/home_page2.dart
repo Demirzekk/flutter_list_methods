@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_list_methods/perfect_project.dart';
 import 'package:flutter_list_methods/reinforcemente_xample.dart';
 import 'package:flutter_list_methods/string_methods/string_methods.dart';
 
@@ -28,6 +29,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
   @override
   Widget build(BuildContext context) {
     final ReinforcementExample exampledata = ReinforcementExample.instance;
+    final PerfectProject perfec = PerfectProject();
 
     return Scaffold(
       appBar: AppBar(
@@ -56,7 +58,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    onPressed: exampledata.nameList,
+                    onPressed: exampledata.history,
                     child: const Text("Try it"))),
           ],
         ),
