@@ -477,4 +477,42 @@ class ReinforcementExample {
 
     // log(countryCapital.toString());
   }
+
+ 
+  }
+//   Soru 1) dışarıdan list int parametresi alan ve sadece tek sayilari toplayan dart programini yazin  +++
+
+  example1(List<int> sample) {
+    var sampleOddControl = sample.where((element) => element.isOdd);
+    if (sampleOddControl.isNotEmpty) {
+      var oddTotalResult =
+          sampleOddControl.reduce((value, element) => element + value);
+      log(oddTotalResult.toString());
+    }
+  }
+
+// Soru 2) Verilen sayinin faktöriyelini alan dart fonksiyonunu yazınız
+  example2() {
+    int factorialNumbers = 5;
+  }
+
+// Soru 3) [23,45,16,20,30,57,60] dizisinde hem 4 e hemde 5 e bölünen sayıları bulup loga yazdiriniz.
+
+  divisibleNumbers() {
+    List<int> numbers = [23, 45, 16, 20, 30, 57, 60, 4, 80];
+    var four = 4;
+    var five = 5;
+
+    for (var i = 0; i < numbers.length; i++) {
+      if (numbers[i] % four == 0 && numbers[i] % five == 0) {
+        log(numbers[i].toString());
+      } else {
+        log("bu listedeki sayıların hiçbiri 4 ve 5 'e aynı anda bölünemiyor");
+      }
+    }
+
+   
+  }
+
+// Soru 4) Bir telefon numarasının 11 haneli olup olmadığıni ve başınin 05 ile basladigini kontrol edin. Beklenen => 05xx xxx xx xx
 }

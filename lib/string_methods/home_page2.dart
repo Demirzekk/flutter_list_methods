@@ -17,6 +17,7 @@ class MyHomePage2 extends StatefulWidget {
 
 class _MyHomePage2State extends State<MyHomePage2> {
   String text = "welcome to flutter";
+  List<int> deneme = [2, 4, 8, 6, 3, 4, 6, 2, 7, 2, 5, 9, 11];
 
   List<String> list = [
     "ahmet@mail.com",
@@ -58,7 +59,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    onPressed: exampledata.countriesMap,
+                    onPressed: exampledata.divisibleNumbers,
                     child: const Text("Try it"))),
           ],
         ),
