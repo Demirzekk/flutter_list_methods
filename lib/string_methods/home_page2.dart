@@ -7,6 +7,7 @@ import 'package:flutter_list_methods/reinforcemente_xample.dart';
 import 'package:flutter_list_methods/string_methods/string_methods.dart';
 
 import '../list_methods2.dart';
+import '../student_sample/student.dart';
 
 class MyHomePage2 extends StatefulWidget {
   const MyHomePage2({super.key});
@@ -17,7 +18,7 @@ class MyHomePage2 extends StatefulWidget {
 
 class _MyHomePage2State extends State<MyHomePage2> {
   String text = "welcome to flutter";
-  List<int> deneme = [2, 4, 8, 6, 3, 4, 6, 2, 7, 2, 5, 9, 11];
+  List<int> sampleNumbers = [1, 2, 3, 4, 5];
 
   List<String> list = [
     "ahmet@mail.com",
@@ -59,7 +60,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    onPressed: exampledata.divisibleNumbers,
+                    onPressed: StudentViewModel().getStudentSameClass,
                     child: const Text("Try it"))),
           ],
         ),

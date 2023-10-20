@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:developer';
-import 'dart:math' hide log;
 
 class ReinforcementExample {
   static ReinforcementExample? _instance;
@@ -477,42 +475,67 @@ class ReinforcementExample {
 
     // log(countryCapital.toString());
   }
-
- 
-  }
+}
 //   Soru 1) dışarıdan list int parametresi alan ve sadece tek sayilari toplayan dart programini yazin  +++
 
-  example1(List<int> sample) {
-    var sampleOddControl = sample.where((element) => element.isOdd);
-    if (sampleOddControl.isNotEmpty) {
-      var oddTotalResult =
-          sampleOddControl.reduce((value, element) => element + value);
-      log(oddTotalResult.toString());
-    }
+sumOddNumbers(List<int> sample) {
+  var sampleOddControl = sample.where((element) => element.isOdd);
+  if (sampleOddControl.isNotEmpty) {
+    var oddTotalResult =
+        sampleOddControl.reduce((value, element) => element + value);
+
+    log(oddTotalResult.toString());
   }
+}
 
 // Soru 2) Verilen sayinin faktöriyelini alan dart fonksiyonunu yazınız
-  example2() {
-    int factorialNumbers = 5;
+factorialCalculator({int number = 5}) {
+  // 3! = 3.2.1 =6
+  int factorial = 1;
+  // // for (int i = 1; i <= number; i++) {
+  // //   log(i.toString());
+  // //   factorial *= i;
+  // // }
+  // int i = 1;
+  // while (i < (number + 1)) {
+  //   factorial *= i; // factorial = factorial * i;
+  //   i++;
+  // }
+
+  // log(factorial.toString());
+
+  List<int> numbers = [];
+  for (int i = 1; i <= number; i++) {
+    numbers.add(i);
   }
+
+  // log(numbers.toString());
+
+  numbers.map((e) => factorial *= e).toList();
+  log(factorial.toString());
+}
 
 // Soru 3) [23,45,16,20,30,57,60] dizisinde hem 4 e hemde 5 e bölünen sayıları bulup loga yazdiriniz.
 
-  divisibleNumbers() {
-    List<int> numbers = [23, 45, 16, 20, 30, 57, 60, 4, 80];
-    var four = 4;
-    var five = 5;
+divisibleNumbers() {
+  List<int> numbers = [23, 45, 16, 21, 30, 57, 61, 4, 81];
+  List<int> diviableNumbers = [];
+  var four = 4;
+  var five = 5;
 
-    for (var i = 0; i < numbers.length; i++) {
-      if (numbers[i] % four == 0 && numbers[i] % five == 0) {
-        log(numbers[i].toString());
-      } else {
-        log("bu listedeki sayıların hiçbiri 4 ve 5 'e aynı anda bölünemiyor");
-      }
-    }
+  // for (var i = 0; i < numbers.length; i++) {
+  //   if (numbers[i] % four == 0 && numbers[i] % five == 0) {
+  //     diviableNumbers.add(numbers[i]);
+  //   }
+  // }
 
-   
+  numbers.removeWhere((element) => element % four != 0 || element % five != 0);
+  if (numbers.isEmpty == true) {
+    log("Bu listede 4 ve 5'e bölünebilen sayı bulunamadı");
+    return;
   }
+  log("4 ve 5 sayısına bölünen sayılar: $numbers");
+}
 
 // Soru 4) Bir telefon numarasının 11 haneli olup olmadığıni ve başınin 05 ile basladigini kontrol edin. Beklenen => 05xx xxx xx xx
-}
+
