@@ -21,4 +21,44 @@ class StudentViewModel {
       log(sameClass[index].toString());
     });
   }
+  // Soru 1) Bir önceki yaptığımız dersteki student model listesini kullanarak, öğrenci ismine göre arama yapın.
+
+  studentNameLenght() {}
+  // Soru 2) Yine student model listesini kullanarak bu listedeki öğrencilerin not ortalamasını alıp genel olarak ortalama puanı ortaya cikarin
+  studentAvarage() {
+    var avaragePoint = studentModel.reduce(
+        (StudentModel value, StudentModel element) =>
+            value + element.gradeAvarege);
+    var avarageTotal = (avaragePoint / studentModel.length);
+  }
+
+  // Soru 3) Listeye bir öğrenci ekleyin.
+  listAddStudent() {
+    List newStudent = ["çağdaş ", "ata", 12.4, "erkek", 73];
+
+    studentModel.add(newStudent);
+  }
+  // Soru 4) Bu listeden can adindaki öğrenciyi bulup notunu 2 puan yükseltin
+
+  listRemoveName() {
+    for (var i = 0; i < studentModel.length; i++) {
+      final StudentModel forCan;
+      if (forCan.name == "can") {
+        studentModel.remove(studentModel[i]);
+      }
+    }
+  }
+
+
+  // Soru 5) Listeye aynı öğrenciden aynı bilgiler ile bir bir kayit ekleyin. Ve iki kez kayit olan öğrencilerin kaydını bire düşürün
+
+
 }
+
+
+
+
+
+
+
+
