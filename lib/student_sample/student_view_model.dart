@@ -1,7 +1,9 @@
 import 'dart:developer';
 
+import 'package:flutter_list_methods/account_holder/user_model.dart';
 import 'package:flutter_list_methods/student_sample/student_model.dart';
 
+// Dart Type Safety bir dil
 class StudentViewModel {
 // Aynı sınıftan olan öğrencileri getirin
   List<StudentModel> studentModel = [
@@ -23,42 +25,32 @@ class StudentViewModel {
   }
   // Soru 1) Bir önceki yaptığımız dersteki student model listesini kullanarak, öğrenci ismine göre arama yapın.
 
-  studentNameLenght() {}
-  // Soru 2) Yine student model listesini kullanarak bu listedeki öğrencilerin not ortalamasını alıp genel olarak ortalama puanı ortaya cikarin
-  studentAvarage() {
-    var avaragePoint = studentModel.reduce(
-        (StudentModel value, StudentModel element) =>
-            value + element.gradeAvarege);
-    var avarageTotal = (avaragePoint / studentModel.length);
-  }
+  // studentNameLenght() {}
+  // // Soru 2) Yine student model listesini kullanarak bu listedeki öğrencilerin not ortalamasını alıp genel olarak ortalama puanı ortaya cikarin
+  // studentAvarage() {
+  //   var avaragePoint = studentModel.reduce(
+  //       (StudentModel value, StudentModel element) =>
+  //           value + element.gradeAvarege);
+  //   var avarageTotal = (avaragePoint / studentModel.length);
+  // }
 
-  // Soru 3) Listeye bir öğrenci ekleyin.
-  listAddStudent() {
-    List newStudent = ["çağdaş ", "ata", 12.4, "erkek", 73];
+  // // Soru 3) Listeye bir öğrenci ekleyin.
+  // listAddStudent() {
+  //   List<dynamic> newStudent = ["çağdaş ", "ata", 12.4, "erkek", 73];
 
-    studentModel.add(newStudent);
-  }
-  // Soru 4) Bu listeden can adindaki öğrenciyi bulup notunu 2 puan yükseltin
+  //   studentModel.add(newStudent);
+  // }
+  // //Entity
+  // // Soru 4) Bu listeden can adindaki öğrenciyi bulup notunu 2 puan yükseltin
 
-  listRemoveName() {
-    for (var i = 0; i < studentModel.length; i++) {
-      final StudentModel forCan;
-      if (forCan.name == "can") {
-        studentModel.remove(studentModel[i]);
-      }
-    }
-  }
-
+  // listRemoveName() {
+  //   for (var i = 0; i < studentModel.length; i++) {
+  //     final StudentModel forCan;
+  //     if (forCan.name == "can") {
+  //       studentModel.remove(studentModel[i]);
+  //     }
+  //   }
+  // }
 
   // Soru 5) Listeye aynı öğrenciden aynı bilgiler ile bir bir kayit ekleyin. Ve iki kez kayit olan öğrencilerin kaydını bire düşürün
-
-
 }
-
-
-
-
-
-
-
-

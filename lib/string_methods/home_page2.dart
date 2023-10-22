@@ -6,8 +6,9 @@ import 'package:flutter_list_methods/perfect_project.dart';
 import 'package:flutter_list_methods/reinforcemente_xample.dart';
 import 'package:flutter_list_methods/string_methods/string_methods.dart';
 
+import '../account_holder/user_model.dart';
 import '../list_methods2.dart';
-import '../student_sample/student.dart';
+import '../student_sample/student_view_model.dart';
 
 class MyHomePage2 extends StatefulWidget {
   const MyHomePage2({super.key});
@@ -32,10 +33,14 @@ class _MyHomePage2State extends State<MyHomePage2> {
   Widget build(BuildContext context) {
     final ReinforcementExample exampledata = ReinforcementExample.instance;
     final PerfectProject perfec = PerfectProject();
+    String? password;
+    String? email;
+    UserModel userModel = UserModel();
+    userModel = userModel.copyWith(name: "Turan");
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("String Methods"),
+        title: Text(userModel.name ?? "null"),
       ),
       body: Center(
         child: Column(
