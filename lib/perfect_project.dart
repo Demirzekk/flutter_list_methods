@@ -15,7 +15,7 @@ class PerfectProject {
     log(result.toString());
   }
 
-  /// / 3  - Bir liste içindeki en büyük ve en küçük öğeyi bulan programı yazın. +
+  /// / 3  - Bir liste içindeki en büyük ve en küçük öğeyi bulan programı yazın. ++++++++++
 
   question3() {
     List<int> numbers = [1, 2, 3, 4, 5];
@@ -24,7 +24,7 @@ class PerfectProject {
   }
 
   ///
-  /// //4 - Bir listedeki öğelerin sırasını tersine çeviren programı yazın. +
+  /// //4 - Bir listedeki öğelerin sırasını tersine çeviren programı yazın. ++++++++
   ///
   question6() {
     List<int> numbers = [1, 2, 3, 4, 5];
@@ -33,7 +33,7 @@ class PerfectProject {
     log(result.toString());
   }
 
-  /// //5 - Bir liste içindeki tüm tek ve çift sayıları ayıran programı yazın.
+  /// //5 - Bir liste içindeki tüm tek ve çift sayıları ayıran programı yazın.  ++++++++
 
   question7() {
     List<int> numbers = [5, 3, 7, 1, 2, 4, 6];
@@ -45,7 +45,7 @@ class PerfectProject {
 
   ///
   ///
-  /// /6/ - Bir tamsayı listesinin ortalamasını hesaplayan programı yazın.  +
+  /// /6/ - Bir tamsayı listesinin ortalamasını hesaplayan programı yazın.  ++++++
   ///
   question4() {
     List<int> numbers = [5, 3, 7, 1, 2, 4, 6];
@@ -57,7 +57,7 @@ class PerfectProject {
 
   ///
   ///
-  /// /7 - Bir sayı listesini büyükten küçüğe sıralayan programı yazın.  ( -)
+  /// /7 - Bir sayı listesini büyükten küçüğe sıralayan programı yazın.  ++++++
   ///
   question30() {
     List<int> numbers = [5, 3, 7, 1, 2, 4, 6];
@@ -68,29 +68,169 @@ class PerfectProject {
   }
 
   ///
-  /// /8/ - Bir listede belirli bir öğenin ilk indeksini bulan  programı yazın.   +
+  /// /8/ -bir listede parametre alan bir fonksiyon yazın ve dışarıdan aldığı ++++++++++
+  ///  parametre listede varsa bütün listeyi büyük harflerle yazdırsın   +
   ///
-  /// 9// - İki liste verildiğinde, bu iki listeyi birleştiren programı yazın.   +
+
+  question45(String universe) {
+    List<String> universeList = ["samanyolu", "galaksi", "venüs"];
+    for (var i = 0; i < universeList.length; i++) {
+      if (universeList.contains(universe)) {
+        var mat =
+            universe.substring(0, 1).toUpperCase() + universe.substring(1);
+        log(mat);
+      }
+    }
+    return;
+  }
+
+  /// 9// - İki liste verildiğinde, bu iki listeyi birleştiren programı yazın. ++++++
+  ///  ve "B" ile başlayan ilçeleri bir listede toplayın
+
+  question46() {
+    List<String> istanbul = [
+      "Beylikdüzü",
+      "adapazarı",
+      "başakşehir",
+      "bayrampaşa",
+      "beşiktaş"
+    ];
+    List<String> ankara = [
+      "çankaya",
+      "keçiören",
+      "mamak",
+      "sincan",
+      "polatlı",
+      "beypazarı"
+    ];
+
+    List<String> townB = [];
+    istanbul.addAll(ankara);
+
+    for (var i = 0; i < istanbul.length; i++) {
+      if (istanbul[i].substring(0, 1).toLowerCase() == "B".toLowerCase()) {
+        townB.add(istanbul[i].toString());
+      }
+    }
+    log(townB.toString());
+  }
+
+  ///10 Bir listeden belirli bir item bulan veya en yakın list itemlarını bulan programı yazın. +++++
+  question77() {
+    List<String> istanbul = [
+      "Beylikdüzü",
+      "adapazarı",
+      "başakşehir",
+      "bayrampaşa",
+      "beşiktaş"
+    ];
+    List<String> containTown = [];
+
+    for (var i = 0; i < istanbul.length; i++) {
+      if (istanbul[i].contains("ba")) {
+        containTown.add(istanbul[i]);
+      }
+    }
+    log(" Aramanızla Eşleşen: $containTown");
+  }
+
+  /////11 - Bir listeden belirli bir öğeyi kaldıran programı yazın. +++++++
+  ///"in" ve "v" ile biten bir ögeyi kaldırın
+
+  removeTvPlatforms() {
+    List<String> tvPlatforms = [
+      "selçuk",
+      "bein",
+      "netflix",
+      "gain",
+      "blutv",
+      "sinex"
+    ];
+
+    for (var i = 0; i < tvPlatforms.length; i++) {
+      if (tvPlatforms[i].toLowerCase().endsWith("in".toLowerCase()) == true ||
+          tvPlatforms[i].toLowerCase().endsWith("v".toLowerCase()) == true) {
+        tvPlatforms.remove(tvPlatforms[i]);
+      }
+    }
+    log(tvPlatforms.toString());
+  }
+
   ///
-  ///10 Bir listeden belirli bir item bulan veya en yakın list itemlarını bulan programı yazın. +
-  ///önemli ************* arama sayfası / filtreleme
-  ///
-  /////11 - Bir listeden belirli bir öğeyi kaldıran programı yazın.   +
-  ///
-  /// Soru 12) Mail@gmail. com => bu mailde ilk harf yanlışlıkla büyük girilmiş
-//ve . com arasında boşluk bırakılmış. mail@gmail.com şeklinde tekrar console a yazdırınız.
+  /// Soru 12) Mail@gmail. com => bu mailde ilk önce uzun bir boşluk yapılmış daha sonra ++++++++++
+  /// ilk harf yanlışlıkla büyük girilmiş ve . com arasında boşluk bırakılmış. mail@gmail.com
+  /// şeklinde tekrar console a yazdırınız.
+  example8() {
+    List<String> mailList = [
+      "      Mail@gmail. com ",
+      "   TarıKAli@gmail.  com ",
+      "   beriiadıgüzel@gmail.  co m      "
+    ];
 
-// Soru13) List<String> names = [“can”,”mehmet”,”Yusuf”] => dizideki en uzun ismi bulup console’a yazdırın
+    for (var i = 0; i < mailList.length; i++) {
+      var editMailListResult =
+          mailList[i].trim().replaceAll(" ", "").toLowerCase();
+      log(editMailListResult.toString());
+    }
+  }
 
-// Soru14) +(90) 505 555 55 55 => bu numarayı console’a 90505555555 şeklinde yazdırınız ++++
+// Soru13) List<String> names = [“can”,”mehmet”,”Yusuf”] => dizideki en uzun ismi bulup console’a yazdırın.  ++++++++++
 
-// Soru15) +905559095090 bu numaranın Türkiye numarası olup olmadığını doğrulayınız  +++
+  longestName() {
+    List<String> nameList = [
+      "kemal",
+      "yusuf",
+      "tengirşek",
+    ];
+    String longest = "";
 
-//Soru 16) ana, kelek, pide, ada, yapay gibi kelimler palindrom kelimelerdir. Yani terstende okununca aynı => +++---eksik var
+    for (var i = 0; i < nameList.length; i++) {
+      if (nameList[i].length > i) {
+        longest = nameList[i];
+      }
+    }
+    log(longest);
+
+    nameList.sort(
+      (a, b) => a.toLowerCase().length.compareTo(b.toLowerCase().length),
+    );
+    log(nameList.last.toString());
+  }
+
+// Soru14) +(90) 505 555 55 55 => bu numarayı console’a 90505555555 şeklinde yazdırınız ------
+  question653() {}
+
+// Soru15) +905559095090 bu numaranın Türkiye numarası olup olmadığını doğrulayınız  --------------
+
+//Soru 16) ana, kelek, pide, ada, yapay gibi kelimler palindrom kelimelerdir. Yani terstende okununca aynı => ++++++++++++
   //kelime ile karşılaşılır. Verilen bir string kelimenin palindrome bir kelime olup olmadığını bulan dart logicini yazınız.
 
-  //Soru 17) Bir liste içinde bir nesnenin kaç kez tekranlandığını bulan dart logicini yazınız. +++  =>>> bi daha bak
+  question544() {
+    List<String> palindromWords = ["ana", "kelek", "pide", "ada", "yapay"];
+    for (int i = 0; i < palindromWords.length; i++) {
+      final word = palindromWords[i].split("").reversed.join("");
+
+      if (word == palindromWords[i]) {
+        log("$word :  palindrom bir kelimedir");
+      } else {
+        log("${palindromWords[i]} :  palindrom bir kelime değildir!");
+      }
+    }
+    }
+
+    //Soru 17) Bir liste içinde bir nesnenin kaç kez tekranlandığını bulan dart logicini yazınız. 
 //Örnek; [“kaş”,”Kuşadası”,”Lüleburgaz”,”kaş”,”Şişli”]; //Expected=> kaş kelimesi 2 kez geçmektedir.
+
+question23432() {
+  
+
+}
+
+
+
+
+
+
 
 //Soru 18) Bir isim listesini stringe çevirin ve arasına “-“ karakterini koyun. +++ Stringe çevrilmiyor
 // Örnek; [“kaş”,”Kuşadası”,”Lüleburgaz”,,”Şişli”]; Expected=> kaş-kuşadası-lüleburgaz-Şişli
@@ -120,4 +260,5 @@ class PerfectProject {
 // 28- Map<String, String> countryCapital = {  'USA': 'Washington, D.C.', 'India': 'New Delhi',   ++++
 // 'China': ‘’,’Türkiye’:’Ankara’,’Romanya’:’’}; bu map yapısında valuesı boş olmayan değerleri yazdırınız.
 //  Expected=> Türkiye = Ankara, India = New Delhi
+  
 }

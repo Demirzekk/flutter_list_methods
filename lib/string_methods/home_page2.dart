@@ -60,7 +60,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    onPressed: StudentViewModel().getStudentSameClass,
+                    onPressed: perfec.question544,
                     child: const Text("Try it"))),
           ],
         ),

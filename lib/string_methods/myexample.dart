@@ -46,7 +46,7 @@ myStarwithExample() {
 
   myJoinExample() {
     String sample = "TR 1429481501 313114";
-    // regex ile 12 hane say daha sonra bu metodu uygula 5001 için
+    
     var result = sample.split("TR").join("1001");
     log(result);
   }
