@@ -27,12 +27,11 @@ class StudentViewModel {
   studentNameLenght() {
     String searchWord = "";
     for (var i = 0; i < studentModel.length; i++) {
-      if (studentModel[i].name.toLowerCase().contains("kazım".toLowerCase())) {
-        searchWord = studentModel[i].name;
+      if (studentModel[i].name?.toLowerCase().contains("kazım".toLowerCase()) ??
+          false) {
+        searchWord = studentModel[i].name ?? "";
 
         log("$searchWord bulundu");
-      } else {
-        log("aranan eşleşme bulunamadı");
       }
     }
   }
@@ -41,7 +40,7 @@ class StudentViewModel {
   studentAvarage() {
     var totalStudentLenght = studentModel.length;
     for (var i = 0; i < studentModel.length; i++) {
-      var tit = studentModel.map((e) => e.gradeAvarege);
+      var tit = studentModel.map((e) => e.gradeAvarege ?? 0.0);
       var totalPoint = tit.reduce((value, element) => value + element);
       var result = totalPoint / totalStudentLenght;
       log("sınıfın genel not ortalaması $result");
@@ -66,9 +65,9 @@ class StudentViewModel {
   listRemoveName() {
     int addPoint = 2;
     for (var i = 0; i < studentModel.length; i++) {
-      if (studentModel[i].name.toLowerCase().contains("Elif".toLowerCase()) ==
+      if (studentModel[i].name?.toLowerCase().contains("Elif".toLowerCase()) ==
           true) {
-        var point = studentModel[i].gradeAvarege;
+        var point = studentModel[i].gradeAvarege ?? 0.0;
         var result = point + addPoint;
         log(result.toString());
 
@@ -102,9 +101,11 @@ class StudentViewModel {
 
   // soru 7: student modeline göre  notu 50'nin altında olan öğrenciler dersten kalacaktır.
 
+  // TODO null check'siz
+
   repeatingAGrade() {
     for (var i = 0; i < studentModel.length; i++) {
-      if (studentModel[i].gradeAvarege < 50) {
+      if (studentModel[i].gradeAvarege! < 50) {
         var gradeAgain = studentModel[i].name;
         log("sınıf tekrarı yapacak öğrenciler $gradeAgain");
       }
