@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_list_methods/perfect_project.dart';
 import 'package:flutter_list_methods/reinforcemente_xample.dart';
 import 'package:flutter_list_methods/string_methods/string_methods.dart';
+import 'package:flutter_list_methods/student_sample/student.dart';
 
 import '../account_holder/user_model.dart';
 import '../list_methods2.dart';
-import '../student_sample/student_view_model.dart';
 
 class MyHomePage2 extends StatefulWidget {
   const MyHomePage2({super.key});
@@ -35,12 +35,12 @@ class _MyHomePage2State extends State<MyHomePage2> {
     final PerfectProject perfec = PerfectProject();
     String? password;
     String? email;
-    UserModel userModel = UserModel();
-    userModel = userModel.copyWith(name: "Turan");
+    UserModel userkimlik = UserModel();
+    userkimlik = userkimlik.copyWith(name: "Turan");
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(userModel.name ?? "null"),
+        title: Text(userkimlik.name ?? "null"),
       ),
       body: Center(
         child: Column(
@@ -65,7 +65,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    onPressed: perfec.question544,
+                    onPressed: () => StudentViewModel().repeatingAGrade(),
                     child: const Text("Try it"))),
           ],
         ),
