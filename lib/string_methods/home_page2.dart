@@ -4,11 +4,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_list_methods/perfect_project.dart';
 import 'package:flutter_list_methods/reinforcemente_xample.dart';
-import 'package:flutter_list_methods/string_methods/string_methods.dart';
-import 'package:flutter_list_methods/student_sample/student.dart';
 
 import '../account_holder/user_model.dart';
-import '../list_methods2.dart';
+import '../student_sample/student_view_model.dart';
 
 class MyHomePage2 extends StatefulWidget {
   const MyHomePage2({super.key});

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_list_methods/student_sample/student.dart';
 
 import 'string_methods/home_page2.dart';
 
 void main() {
   runApp(const MyApp());
-
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +11,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
