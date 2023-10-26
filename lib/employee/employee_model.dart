@@ -7,8 +7,8 @@
 class EmployeeModel {
   String? name;
   String? surname;
-  int? salary;
-  int? bonus;
+  double? salary;
+  double? bonus;
 
   EmployeeModel(
     this.name,

@@ -65,7 +65,8 @@ class _MyHomePage2State extends State<MyHomePage2> {
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    onPressed: () => perfec.identityTC(),
+                    onPressed: () =>
+                        EmployeViewListModel().employeeListToJson(),
                     child: const Text("Try it"))),
           ],
         ),

@@ -8,9 +8,34 @@ class CountryCapitalModel {
   CountryCapitalModel(this.country, this.capitalCity);
 
   CountryCapitalModel.fromMap(Map<String, String> map) {
-    country = map["country"];
-    capitalCity = map["capitalCity"];
+    country = map.keys.first;
+    capitalCity = map.values.first;
   }
 }
 
 class CountrsList {}
+
+final map = {
+  'USA': 'Washington, D.C.',
+  'India': 'New Delhi',
+  'China': "",
+  "Türkiye": "Ankara",
+  "Romanya": ""
+};
+
+final map2 = {
+  'country': 'Washington, D.C.',
+  'capitalCity': 'New Delhi',
+};
+
+final map3 = [
+  {
+    'USA': 'Washington, D.C.',
+  },
+  {
+    'India': 'New Delhi',
+  },
+  {
+    "Türkiye": "Ankara",
+  }
+];
