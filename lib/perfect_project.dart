@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
+
 class PerfectProject {
   static PerfectProject? _instance;
   static PerfectProject get instance => _instance ??= PerfectProject._();
@@ -216,21 +218,12 @@ class PerfectProject {
         log("${palindromWords[i]} :  palindrom bir kelime değildir!");
       }
     }
-    }
+  }
 
-    //Soru 17) Bir liste içinde bir nesnenin kaç kez tekranlandığını bulan dart logicini yazınız. 
+  //Soru 17) Bir liste içinde bir nesnenin kaç kez tekranlandığını bulan dart logicini yazınız.
 //Örnek; [“kaş”,”Kuşadası”,”Lüleburgaz”,”kaş”,”Şişli”]; //Expected=> kaş kelimesi 2 kez geçmektedir.
 
-question23432() {
-  
-
-}
-
-
-
-
-
-
+  question23432() {}
 
 //Soru 18) Bir isim listesini stringe çevirin ve arasına “-“ karakterini koyun. +++ Stringe çevrilmiyor
 // Örnek; [“kaş”,”Kuşadası”,”Lüleburgaz”,,”Şişli”]; Expected=> kaş-kuşadası-lüleburgaz-Şişli
@@ -260,5 +253,21 @@ question23432() {
 // 28- Map<String, String> countryCapital = {  'USA': 'Washington, D.C.', 'India': 'New Delhi',   ++++
 // 'China': ‘’,’Türkiye’:’Ankara’,’Romanya’:’’}; bu map yapısında valuesı boş olmayan değerleri yazdırınız.
 //  Expected=> Türkiye = Ankara, India = New Delhi
-  
+
+// 29-
+// - Bir TC kimlik numarasının doğru olup olmadığını kontrol eden program yazın.
+// Formül=> TC kimlik numarasının
+//ilk 10 hanesinin toplamı sonucundan çıkan sayının birler
+// basamağındaki sayı 11. Hanedeki sayıya eşitse
+// bu numara geçerli bir TC kimlik numarasıdır.
+
+  identityTC() {
+    String identity = "55532958348";
+    var total = identity
+        .substring(1, 5)
+        .split("")
+        .reduce((value, element) => value + element);
+
+    log(total);
+  }
 }

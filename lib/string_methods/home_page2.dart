@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_list_methods/employee/employee_model.dart';
+import 'package:flutter_list_methods/employee/employee_view_list.dart';
 import 'package:flutter_list_methods/perfect_project.dart';
 import 'package:flutter_list_methods/reinforcemente_xample.dart';
 
@@ -63,7 +65,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    onPressed: () => StudentViewModel().repeatingAGrade(),
+                    onPressed: () => perfec.identityTC(),
                     child: const Text("Try it"))),
           ],
         ),
