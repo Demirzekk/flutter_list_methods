@@ -11,6 +11,8 @@ import 'package:flutter_list_methods/perfect_project.dart';
 import 'package:flutter_list_methods/reinforcemente_xample.dart';
 
 import '../account_holder/user_model.dart';
+import '../coffie/coffie_view_model.dart';
+import '../country/country_capital_view_list.dart';
 import '../student_sample/student_view_model.dart';
 
 class MyHomePage2 extends StatefulWidget {
@@ -68,8 +70,7 @@ class _MyHomePage2State extends State<MyHomePage2> {
                         backgroundColor: Colors.red,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20))),
-                    onPressed: () =>
-                        EmployeViewListModel().employeeListToJson(),
+                    onPressed: () => CoffieViewModel().checkCoffieStock(),
                     child: const Text("Try it"))),
           ],
         ),

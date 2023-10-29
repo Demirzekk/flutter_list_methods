@@ -2,8 +2,6 @@
 //Map<String, String> countryCapital = {  'USA': 'Washington, D.C.', 'India': 'New Delhi',
 //'China': ‘’,’Türkiye’:’Ankara’,’Romanya’:’’}; bu map yapısında valuesu boş olan değerlere bir başkent ekleyin.
 
-import 'dart:developer';
-
 class CountryCapitalModel {
   String? usa;
   String? india;
@@ -15,45 +13,24 @@ class CountryCapitalModel {
       {this.china, this.india, this.romanya, this.turkiye, this.usa});
 
   CountryCapitalModel.fromJson(Map<String, String> json) {
-    usa = json["usa"];
-    india = json["india"];
-    china = json["china"];
+    usa = json["USA"];
+    india = json["India"];
+    china = json["China"];
     turkiye = json["turkiye"];
     romanya = json["romanya"];
   }
 
-  counterfunction() {
-    
-    if (countryMap["USA"] == "" || countryMap["china"] == "") {
-      countryMap["USA"] = "Washington, DC";
-      countryMap["china"] = "pekin";
-      log(countryMap.toString());
-      log("selam");
-    }
-  }
+  // counterfunction() {
+  //   if (countryMap["USA"] == "" || countryMap["china"] == "") {
+  //     countryMap["USA"] = "Washington, DC";
+  //     countryMap["china"] = "pekin";
+  //     log(countryMap.toString());
+  //     log("selam");
+  //   }
+  // }
 
-  final countryMap = {
-    'USA': '',
-    'India': 'New Delhi',
-    'China': "",
-    "Türkiye": "Ankara",
-    "Romanya": ""
-  };
+  @override
+  String toString() {
+    return 'CountryCapitalModel(usa: $usa, india: $india, china: $china, turkiye: $turkiye, romanya: $romanya)';
+  }
 }
-
-final map2 = {
-  'country': 'Washington, D.C.',
-  'capitalCity': 'New Delhi',
-};
-
-final map3 = [
-  {
-    'USA': 'Washington, D.C.',
-  },
-  {
-    'India': 'New Delhi',
-  },
-  {
-    "Türkiye": "Ankara",
-  }
-];
