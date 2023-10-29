@@ -1,22 +1,17 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_list_methods/employee/employee_model.dart';
 
 class EmployeViewListModel {
+ 
   List<EmployeeModel> employedList = [
     EmployeeModel("hayri", "Mafız", 10000, 0),
     EmployeeModel("Süleyman", "Kurtuluş", 20000, 0),
     EmployeeModel("hüzeyma", "kaplan", 5000, 0),
     EmployeeModel("Mevlüt", "Tükenmez", 50000, 0),
-    EmployeeModel("firuze", "Fil", 10000, 0),
   ];
-
-  // - Bir Employee objesi hazırlayın. İçerisinde name, surname ve salary ve bonus fieldları olsun.
-// Bu Employee objesi tipinde 5 adetlik bir liste oluşturun. Salary fieldına maaş atamaları yapın.
-//Ve maaşının yüzde 20sini yıllık alacağını bonus fieldına ekleyin.
-//Son olarak isim ve prim olarak liste halinde hangi işcinin ne kadar prim alacağını loga yazdırınız.
-// - Yukarıdaki örnekte yapıtığınız 5 adetlik Employe listesini json formatına dönüştürün ve loga yazdırınız
 
 // soru 1:
   annualBonus() {
@@ -54,6 +49,18 @@ class EmployeViewListModel {
       return EmployeeModel.fromJson(json);
     }).toList();
     log(rest.toString());
+    log("************");
+
+    for (var i = 0; i < employedList.length; i++) {
+      if ((employedList[i].salary ?? 4) < 20000) {
+        log(employedList[i].toString());
+      }
+
+      if (employedList[i].name == "hüzeyma") {
+        var fit = employedList[i].surname;
+        log(fit.toString());
+      }
+    }
   }
 }
 
@@ -79,12 +86,36 @@ final maplist2 = [
   {"name": "firuze", "surname": "Fil", "salary": 10000.0, "bonus": 0.0}
 ];
 
-final map3 = {
+class PageViewTheme {
+  String? title;
+  String? desc;
+  String? button;
+  List<TitleAndSubtitle>? subText;
+  PageViewTheme(this.button, this.desc, this.title, this.subText);
+
+  PageViewTheme.fromJson(Map<String, dynamic> json) {
+    title = json["title"];
+    desc = json["desc"];
+    button = json["button"];
+    if (json["subText"] != null) {
+      subText = [];
+    }
+  }
+}
+
+class TitleAndSubtitle {
+  String title;
+  String subtitle;
+  String icon;
+  TitleAndSubtitle(this.icon, this.subtitle, this.title);
+}
+
+final pageViewThemeMap = {
   "title": "Whats new",
   "desc": [
     {
       {
-        "icon": "email.icon",
+        "icon": Icons.abc_outlined,
         "title": "Fount Events",
         "subtitle": "Siri suggets..."
       },
