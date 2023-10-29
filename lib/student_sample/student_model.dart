@@ -15,12 +15,12 @@ class StudentModel {
   }
 
   StudentModel.fromJson(Map<String, dynamic> json) {
-    name = json[name];
-    surname = json[surname];
-    age = json[age];
-    classroom = json[classroom];
-    gender = json[gender];
-    gradeAvarege = json[gradeAvarege];
+    name = json["name"];
+    surname = json["surname"];
+    age = json["age"];
+    classroom = json["classroom"];
+    gender = json["gender"];
+    gradeAvarege = json["gradeAvarege"];
   }
   toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
@@ -28,9 +28,9 @@ class StudentModel {
     json["surname"] = surname;
     json["age"] = age;
     json["classroom"] = classroom;
-
     json["gender"] = gender;
     json["gradeAvarege"] = gradeAvarege;
+    return json;
   }
 
   StudentModel copyWith({

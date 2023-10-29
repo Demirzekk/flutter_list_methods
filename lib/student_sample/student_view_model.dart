@@ -5,8 +5,8 @@ import 'package:flutter_list_methods/student_sample/student_model.dart';
 class StudentViewModel {
 // Aynı sınıftan olan öğrencileri getirin
 
-  List<StudentModel> studentModel = [
-    StudentModel("Ahmet", "Muhsin", 10, 5, "Erkek", null),
+  List<StudentModel> studentModelList = [
+    StudentModel("Ahmet", "Muhsin", 10, 5, "Erkek", 44.3),
     StudentModel("Elif", "Can", 11, 6, "Kız", 55.0),
     StudentModel("Ayşe", "nur", 9, 4, "Kız", 58.0),
     StudentModel("Kazım", "Kaz", 10, 5, "Erkek", 50),
@@ -16,7 +16,7 @@ class StudentViewModel {
 
   getStudentSameClass() {
     List<StudentModel> sameClass = [];
-    sameClass = studentModel
+    sameClass = studentModelList
         .where((StudentModel student) => student.classroom == 5)
         .toList();
     List.generate(sameClass.length, (index) {
@@ -47,14 +47,14 @@ class StudentViewModel {
 
 //   // Soru 2) Yine student model listesini kullanarak bu listedeki öğrencilerin not ortalamasını alıp genel olarak ortalama puanı ortaya cikarin
   studentAvarage() {
-    var totalStudentLenght = studentModel.length;
+    var totalStudentLenght = studentModelList.length;
     // for (var i = 0; i < totalStudentLenght; i++) {
     //   var tit = studentModel.map((e) => e.gradeAvarege ?? 0.0);
     //   var totalPoint = tit.reduce((value, element) => value + element);
     //   var result = totalPoint / totalStudentLenght;
     //   log("sınıfın genel not ortalaması $result");
     // }
-    final res = studentModel
+    final res = studentModelList
         .map((e) => e.gradeAvarege)
         .reduce((value, element) => (value ?? 0) + (element ?? 0));
     double avarage = (res ?? 0) / totalStudentLenght;
@@ -70,10 +70,10 @@ class StudentViewModel {
     ];
     // studentModel.add(newStudent[1]);
 //listenin ilk basına ekleme
-    studentModel.insert(0, newStudent[1]);
+    studentModelList.insert(0, newStudent[1]);
     // tüm listeyi diğer listeye ekleme
     // studentModel.addAll(newStudent);
-    var aloneName = studentModel.map((e) => e.name).toList();
+    var aloneName = studentModelList.map((e) => e.name).toList();
 
     log(aloneName.toString());
   }
@@ -81,14 +81,17 @@ class StudentViewModel {
 
   listRemoveName() {
     int addPoint = 2;
-    for (var i = 0; i < studentModel.length; i++) {
-      if (studentModel[i].name?.toLowerCase().contains("Elif".toLowerCase()) ==
+    for (var i = 0; i < studentModelList.length; i++) {
+      if (studentModelList[i]
+              .name
+              ?.toLowerCase()
+              .contains("Elif".toLowerCase()) ==
           true) {
-        studentModel[i] = studentModel[i].copyWith(
+        studentModelList[i] = studentModelList[i].copyWith(
             name: "Zeynep",
-            gradeAvarege: (studentModel[i].gradeAvarege ?? 0) + addPoint);
+            gradeAvarege: (studentModelList[i].gradeAvarege ?? 0) + addPoint);
 
-        log(studentModel[i].toString());
+        log(studentModelList[i].toString());
 
         return;
 
@@ -110,13 +113,14 @@ class StudentViewModel {
     // studentModel.toSet().addAll(newRegisterStudentList);
     // log(studentModel.toString());
     // var model = StudentModel("Ahmet", "Muhsin", 10, 5, "Erkek", 48.0);
-    for (int i = 0; i < studentModel.length; i++) {
+    for (int i = 0; i < studentModelList.length; i++) {
       StudentModel? model =
-          (studentModel[i].name?.toLowerCase() == "Ahmet".toLowerCase()) == true
-              ? studentModel[i]
+          (studentModelList[i].name?.toLowerCase() == "Ahmet".toLowerCase()) ==
+                  true
+              ? studentModelList[i]
               : null;
-      if (studentModel[i] == model) {
-        studentModel.remove(studentModel[i]);
+      if (studentModelList[i] == model) {
+        studentModelList.remove(studentModelList[i]);
       }
 
       // if (studentModel[i].name?.toLowerCase().contains("Ahmet".toLowerCase()) ==
@@ -130,7 +134,7 @@ class StudentViewModel {
       // }
     }
 
-    studentModel.map((e) {
+    studentModelList.map((e) {
       log(e.toString());
       return e;
     }).toList();
@@ -138,9 +142,9 @@ class StudentViewModel {
 
   // soru6) Aynı sıfıtan olan öğrencileri getirin
   sameClassStudent() {
-    for (var i = 0; i < studentModel.length; i++) {
-      if (studentModel[i].classroom == 5) {
-        log(studentModel[i].toString());
+    for (var i = 0; i < studentModelList.length; i++) {
+      if (studentModelList[i].classroom == 5) {
+        log(studentModelList[i].toString());
       }
     }
   }
@@ -150,11 +154,12 @@ class StudentViewModel {
   // TODO null check'siz
 
   repeatingAGrade() {
-    for (var i = 0; i < studentModel.length; i++) {
-      if ((studentModel[i].gradeAvarege ?? 0) < 50) {
-        var gradeAgain = studentModel[i].name;
+    for (var i = 0; i < studentModelList.length; i++) {
+      if ((studentModelList[i].gradeAvarege ?? 0) < 50) {
+        var gradeAgain = studentModelList[i].name;
         log("sınıf tekrarı yapacak öğrenciler $gradeAgain");
       }
     }
   }
+
 }

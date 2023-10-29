@@ -2,26 +2,44 @@
 //Map<String, String> countryCapital = {  'USA': 'Washington, D.C.', 'India': 'New Delhi',
 //'China': ‘’,’Türkiye’:’Ankara’,’Romanya’:’’}; bu map yapısında valuesu boş olan değerlere bir başkent ekleyin.
 
+import 'dart:developer';
+
 class CountryCapitalModel {
-  String? country;
-  String? capitalCity;
-  CountryCapitalModel(this.country, this.capitalCity);
+  String? usa;
+  String? india;
+  String? china;
+  String? turkiye;
+  String? romanya;
 
-  CountryCapitalModel.fromMap(Map<String, String> map) {
-    country = map.keys.first;
-    capitalCity = map.values.first;
+  CountryCapitalModel(
+      {this.china, this.india, this.romanya, this.turkiye, this.usa});
+
+  CountryCapitalModel.fromJson(Map<String, String> json) {
+    usa = json["usa"];
+    india = json["india"];
+    china = json["china"];
+    turkiye = json["turkiye"];
+    romanya = json["romanya"];
   }
+
+  counterfunction() {
+    
+    if (countryMap["USA"] == "" || countryMap["china"] == "") {
+      countryMap["USA"] = "Washington, DC";
+      countryMap["china"] = "pekin";
+      log(countryMap.toString());
+      log("selam");
+    }
+  }
+
+  final countryMap = {
+    'USA': '',
+    'India': 'New Delhi',
+    'China': "",
+    "Türkiye": "Ankara",
+    "Romanya": ""
+  };
 }
-
-class CountrsList {}
-
-final map = {
-  'USA': 'Washington, D.C.',
-  'India': 'New Delhi',
-  'China': "",
-  "Türkiye": "Ankara",
-  "Romanya": ""
-};
 
 final map2 = {
   'country': 'Washington, D.C.',
