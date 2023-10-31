@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter_list_methods/map_learn.dart/map_stil.dart';
@@ -32,5 +33,11 @@ class CompanyUserModel {
     log(rest.salery.toString());
 
     log(rest.name.toString());
+  }
+
+  Map<int, dynamic> idAndName = {};
+
+  nameMapFunc() {
+
   }
 }

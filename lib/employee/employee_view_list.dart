@@ -84,29 +84,4 @@ final maplist2 = [
   {"name": "Mevlüt", "surname": "Tükenmez", "salary": 50000.0, "bonus": 0.0},
   {"name": "firuze", "surname": "Fil", "salary": 10000.0, "bonus": 0.0}
 ];
-// TODO
-final pageViewThemeMap = {
-  "title": "Whats new",
-  "desc": [
-    {
-      "icon": Icons.abc_outlined,
-      "title": "Fount Events",
-      "subtitle": "Siri suggets..."
-    },
-    {
-      "icon": "time.icon",
-      "title": "Time to Leave",
-      "subtitle": "Calander suggets..."
-    },
-    {
-      "icon": "route.icon",
-      "title": "Location to Leave",
-      "subtitle": "Calander suggets..."
-    }
-  ],
-  "button": {
-    "button_color": "red",
-    "button_title": "Continue",
-    "button_link": "main_page"
-  }
-};
+
