@@ -1,9 +1,7 @@
 
 
 
-
-
-Map<String, dynamic> companyUser = {
+  Map<String, dynamic> companyUser = {
   "name": "mesut",
   "surname" : "karabulut",
   "age" : "44",
@@ -12,4 +10,10 @@ Map<String, dynamic> companyUser = {
 
 
 };
+
+
+
+
+
+
 

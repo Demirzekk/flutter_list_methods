@@ -22,16 +22,12 @@ List<Map<String, dynamic>> coffieListMap = [
 class CoffieModel {
   String? key;
   double? value;
-  
 
   CoffieModel.fromJson(Map<String, dynamic> json) {
     key = json.keys.first;
-    value = json.values.first;
-    
+    value = json.values.first ?? 4.3;
   }
 
   @override
   String toString() => 'CoffieModel(key: $key, value: $value)';
 }
-
- 
