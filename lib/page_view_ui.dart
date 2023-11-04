@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_list_methods/page_view_theme/page_view.dart';
 
+
 class PageViewUI extends StatefulWidget {
   const PageViewUI({super.key});
 
@@ -50,7 +51,7 @@ class _PageViewUIState extends State<PageViewUI> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                     Text(
-                      "${(model?.title ?? "null").split(" ").first.substring(0, 1).toUpperCase()}${(model?.title ?? "null").split(" ").first.substring(1)} ${(model?.title ?? "null").split(" ").last.substring(0, 1).toUpperCase()}${(model?.title ?? "null").split(" ").last.substring(1)}",
+                      (model?.title ?? "null"),
                       style: const TextStyle(
                           fontSize: 28, fontWeight: FontWeight.w500),
                     ),
@@ -92,7 +93,10 @@ class _PageViewUIState extends State<PageViewUI> {
                                   builder: (context) =>
                                       model!.button!.buttonLink!));
                         },
-                        child: Text(model?.button?.buttonTitle ?? "null"),
+                        child: InkWell(onTap: (){ 
+                          
+                          
+                        } , child: Text(model?.button?.buttonTitle ?? "null")),
                       ),
                     )
                   ]),

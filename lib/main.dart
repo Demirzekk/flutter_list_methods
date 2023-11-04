@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_list_methods/apple_news/apple_news_ui.dart';
 import 'package:flutter_list_methods/page_view_ui.dart';
 
 void main() {
@@ -16,6 +17,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const PageViewUI());
+        home: const AppleNewsUI());
   }
 }
