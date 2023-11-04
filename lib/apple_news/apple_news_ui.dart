@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_list_methods/apple_news/apple_news_model.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -19,8 +22,6 @@ class _AppleNewsUIState extends State<AppleNewsUI> {
     });
     super.initState();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +47,9 @@ class _AppleNewsUIState extends State<AppleNewsUI> {
           Center(
               child: Text(
             appleModel?.title2 ?? "",
-            style: Theme.of(context)
-                .textTheme
-                .displaySmall
-                ?.copyWith(color: Colors.red, fontWeight: FontWeight.w900),
+            style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                color: Color(appleModel?.titleLinkColor ?? 0),
+                fontWeight: FontWeight.w900),
           )),
           Padding(
             padding: const EdgeInsets.only(
@@ -68,20 +68,25 @@ class _AppleNewsUIState extends State<AppleNewsUI> {
             color: Colors.pink,
           ),
           Padding(
-            padding: const EdgeInsets.only(
-              top: 10,
-              right: 90,
-              left: 90,
-            ),
-            child: Text(
-              appleModel?.desc ?? "null",
-              style: Theme.of(context).textTheme.bodyMedium,
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Text(
-            appleModel?.seeLink?.linkText ?? "ndsdsdull",
-            style: TextStyle(color: Color(appleModel?.seeLink?.linkColor ?? 0)),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: RichText(
+                text: TextSpan(
+                    text: appleModel?.desc ?? "null",
+                    style: const TextStyle(color: Colors.black),
+                    children: [
+                  TextSpan(
+                      text: appleModel?.seeLink?.linkText ?? "",
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          log("Text'e tıklandı: ${appleModel?.seeLink?.linkUrl}");
+                          launchUrl(
+                              Uri.parse(appleModel?.seeLink?.linkUrl ??
+                                  "https://www.google.com.tr"),
+                              mode: LaunchMode.externalApplication);
+                        },
+                      style: TextStyle(
+                          color: Color(appleModel?.seeLink?.linkColor ?? 0)))
+                ])),
           ),
           ElevatedButton(
               style: ElevatedButton.styleFrom(

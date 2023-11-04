@@ -8,14 +8,16 @@ String appleNewsUrl =
 Map<String, dynamic> appleNewsMap = {
   "big_logo": appleNewsUrl,
   "title1": "Welcome to ",
-  "title2": "apple News",
+  "title2": "Apple News",
+  "title_link_color": 0xFFFFB0B43,
+  "title": {"Welcome to", "Apple News"},
   "subtitle":
       "The best stories from the soures you love, seleted just for you.",
   "icon": Icons.newspaper,
   "desc":
-      "apple collects yout activity in news , whih is not assoiated with your Apple ID, in order to improve and personalize Apple News. when....",
+      "Apple collects yout activity in news , whih is not assoiated with your Apple ID, in order to improve and personalize Apple News. when....",
   "see_link": {
-    "link_text": "See how your datais managed",
+    "link_text": " See how your data is managed.",
     "link_color": 0xFFFFB0B43,
     "link_url": "https://onedio.com/"
   },
@@ -31,6 +33,8 @@ class AppleNewsModel {
   String? title1;
   String? title2;
   String? subtitle;
+  int? titleLinkColor;
+
   IconData? icon;
   String? desc;
   SeeLink? seeLink;
@@ -44,6 +48,7 @@ class AppleNewsModel {
     title1 = json["title1"];
     title2 = json["title2"];
     subtitle = json["subtitle"];
+    titleLinkColor = json["title_link_color"];
     icon = json["icon"];
     desc = json["desc"];
     seeLink = SeeLink.fromJson(json["see_link"]);
@@ -65,36 +70,6 @@ class BigLogo {
   }
 }
 
-class Title1 {
-  String? title1;
-  Title1(this.title1);
-
-  Title1.fromJson(Map<String, dynamic> json) {
-    title1 = json["title1"];
-  }
-
-  toJson() {
-    final Map<String, dynamic> json = <String, dynamic>{};
-    json["title1"] = title1;
-    return json;
-  }
-}
-
-class Title2 {
-  String? title2;
-  Title2(this.title2);
-
-  Title2.fromJson(Map<String, dynamic> json) {
-    title2 = json["title2"];
-  }
-
-  toJson() {
-    final Map<String, dynamic> json = <String, dynamic>{};
-    json["title2"] = title2;
-    return json;
-  }
-}
-
 class Subtitle {
   String? subtitle;
   Subtitle(this.subtitle);
@@ -106,22 +81,6 @@ class Subtitle {
   toJson() {
     final Map<String, dynamic> json = <String, dynamic>{};
     json["subtitle"] = subtitle;
-    return json;
-  }
-}
-
-class IconEx {
-  IconData? icon;
-  IconEx(
-    this.icon,
-  );
-
-  IconEx.fromJson(Map<String, dynamic> json) {
-    icon = json["icon"];
-  }
-  toJson() {
-    final Map<String, dynamic> json = <String, dynamic>{};
-    json["icon"] = icon;
     return json;
   }
 }
