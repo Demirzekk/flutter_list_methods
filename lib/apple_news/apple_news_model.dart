@@ -13,9 +13,9 @@ Map<String, dynamic> appleNewsMap = {
   "title": {"Welcome to", "Apple News"},
   "subtitle":
       "The best stories from the soures you love, seleted just for you.",
-  "icon": Icons.newspaper,
+  "icon": Icons.groups_2,
   "desc":
-      "Apple collects yout activity in news , whih is not assoiated with your Apple ID, in order to improve and personalize Apple News. when....",
+      "Apple collects yout activity in news , whih is not assoiated with your Apple ID, in order to improve and personalize Apple News. when. with your Apple ID, in order to improve and personalize Apple News. when with your Apple ID, in order to improve and personalize Apple News. when...",
   "see_link": {
     "link_text": " See how your data is managed.",
     "link_color": 0xFFFFB0B43,
